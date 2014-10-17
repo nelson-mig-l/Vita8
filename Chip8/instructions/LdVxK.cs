@@ -17,7 +17,7 @@ namespace Chip8
 
 			for(int i = 0; i < 16; i++)
 			{
-				if(chip8.key[i] != 0)
+				if(chip8.Keypad.Get(i) != 0)
 				{
 					chip8.v[x] = (byte)i;
 					keyPress = true;
@@ -29,6 +29,11 @@ namespace Chip8
 			{
 				chip8.programCounter += 2;			
 			}
+		}
+		
+		public override string Assembler()
+		{
+			return ASSEMBLER;
 		}
 	}
 }

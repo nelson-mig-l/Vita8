@@ -19,7 +19,11 @@ namespace Chip8
 			chip8.v[x] = (byte)(buffer[0] & kk);
 			chip8.programCounter += 2;
 		}	
-
+		
+		public override string Assembler()
+		{
+			return ASSEMBLER;
+		}
 	}
 }
 

@@ -46,6 +46,16 @@ namespace Chip8
 			return this.gfx[i];
 		}
 		
+		public int Columns 
+		{
+			get { return columns; }
+		}
+		
+		public int Rows
+		{
+			get { return rows; }
+		}
+		
 		public bool Modified
 		{
 			get { return modified; }

@@ -85,12 +85,14 @@ namespace Vita8
 						switch (touchData.Status)
 						{
 						case TouchStatus.Up:
-							chip8.key[btn.id] = 0;
+							chip8.Keypad.Set(btn.id, false);
+							//chip8.key[btn.id] = 0;
 							//System.Console.WriteLine("UP" + btn.id);
 							break;
 							
 						case TouchStatus.Down:
-							chip8.key[btn.id] = 1;
+							chip8.Keypad.Set(btn.id, true);
+							//chip8.key[btn.id] = 1;
 							//System.Console.WriteLine("DOWN" + btn.id);
 							break;
 						}

@@ -35,8 +35,8 @@ namespace Vita8
 				int[] modified = display.GetModified();
 				foreach (int index in modified)
 				{
-					int col = index % 64;
-					int row = index / 64;
+					int col = index % display.Columns;
+					int row = index / display.Columns;
 					if (display.Get(index) == 0)
 					{
 						Vita8Graphics.FillRect(COLOR_OFF, x+col*pixelSize, y+row*pixelSize, pixelSize, pixelSize);	

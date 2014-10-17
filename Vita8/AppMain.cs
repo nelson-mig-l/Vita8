@@ -37,6 +37,7 @@ namespace Vita8
 			}
 		}
 		
+		private static int realfps = 0;
 		private static int fps = 0;
 		private static int ips = 0;
 		public static void Initialize ()
@@ -44,7 +45,8 @@ namespace Vita8
 #if DEBUG
 			refreshRate.Enabled = true;
 			refreshRate.Elapsed += delegate {
-				System.Console.WriteLine(fps + " FPS "+ ips + " IPS");	
+				System.Console.WriteLine("FPS(" + fps + "/" + realfps + ") IPS=" + ips + "");	
+				realfps = 0;
 				fps = 0;
 				ips = 0;
 			};
@@ -70,7 +72,7 @@ namespace Vita8
 		
 		public static void Render ()
 		{
-
+			realfps++;
 			if (chip8.Display.Modified) {
 				fps++;
 				screen.Render(chip8.Display);

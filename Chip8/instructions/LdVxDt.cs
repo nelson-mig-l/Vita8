@@ -16,7 +16,11 @@ namespace Chip8
 			chip8.v[x] = chip8.delayTimer;
 			chip8.programCounter += 2;
 		}
-
+		
+		public override string Assembler()
+		{
+			return ASSEMBLER;
+		}
 	}
 }
 

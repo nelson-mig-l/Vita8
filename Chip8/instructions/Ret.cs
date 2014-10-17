@@ -17,6 +17,11 @@ namespace Chip8
 			chip8.programCounter = chip8.stack[chip8.stackPointer];
 			chip8.programCounter += 2;
 		}	
+		
+		public override string Assembler()
+		{
+			return ASSEMBLER;
+		}
 	}
 }
 

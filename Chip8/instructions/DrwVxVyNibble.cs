@@ -33,14 +33,16 @@ namespace Chip8
 						{
 							chip8.v[0xF] = 1;                                    
 						}
-						//chip8.gfx[row + xline + ((col + yline) * 64)] ^= 1;
 						chip8.Display.Set(index, (byte)(chip8.Display.Get(index) ^ 1));
 					}
 				}
 			}
-						
-			//chip8.drawFlag = true;			
 			chip8.programCounter += 2;			
+		}
+		
+		public override string Assembler()
+		{
+			return ASSEMBLER;
 		}
 	}
 }

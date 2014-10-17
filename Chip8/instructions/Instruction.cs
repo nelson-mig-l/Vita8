@@ -22,6 +22,8 @@ namespace Chip8
 		}
 		
 		public abstract void Execute(Chip8 chip8);
+		
+		public abstract string Assembler();
 	}
 }
 

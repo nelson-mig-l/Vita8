@@ -75,6 +75,7 @@
     <Compile Include="instructions\LdIVx.cs" />
     <Compile Include="instructions\LdVxI.cs" />
     <Compile Include="Display.cs" />
+    <Compile Include="Keypad.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="instructions\" />

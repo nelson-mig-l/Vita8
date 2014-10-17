@@ -26,8 +26,9 @@ namespace Chip8
 		};
 		
 		internal Display display;
+		internal Keypad keypad;
 		// XXX: Public?
-		public byte[] key = new byte[16];
+		//public byte[] key = new byte[16];
 		
 		internal ushort programCounter;
 		internal ushort opcode;
@@ -66,6 +67,7 @@ namespace Chip8
 			clock.Enabled = true;
 			
 			display = new Display(64, 32);
+			keypad = new Keypad(16);
 			//rand.NextBytes
 			Init();
 		}
@@ -75,9 +77,14 @@ namespace Chip8
 			this.opcode = (ushort)(this.memory[this.programCounter] << 8 | this.memory[this.programCounter + 1]);
 			
 			Instruction instruction = InstructionSet.GetInstruction(this.opcode);
-			//System.Console.WriteLine(BitConverter.ToString(this.memory, this.pc, 2));
+			/*			
+			int na = (opcode & 0xF000) >> 12;
+			int nb = (opcode & 0x0F00) >> 8;
+			int nc = (opcode & 0x00F0) >> 4;
+			int nd = (opcode & 0x000F);
+			System.Console.WriteLine(string.Format(instruction.Assembler(), na, nb, nc, nd));
+			*/
 			instruction.Execute(this);
-			//System.Console.WriteLine(instruction);
 		}
 		
 		public void DebugRender()
@@ -106,8 +113,9 @@ namespace Chip8
 			get { return display; }
 		}
 		
-		public byte Key(int key) {
-			return this.key[key];
+		public Keypad Keypad
+		{
+			get { return keypad; }
 		}
 		
 		private void Init()
@@ -118,16 +126,13 @@ namespace Chip8
 			this.stackPointer = 0;
 
 			display.Reset();
+			keypad.Reset();
 			
 			for (int i = 0; i < 16; i++)
 			{
 				this.stack[i] = 0;
 			}
 			
-			for (int i = 0; i < 16; i++)
-			{
-				this.key[i] = 0;
-			}
 
 			for (int i = 0; i < 4096; i++)
 			{
