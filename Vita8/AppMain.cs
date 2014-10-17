@@ -71,17 +71,13 @@ namespace Vita8
 		public static void Render ()
 		{
 
-			if (chip8.DrawFlag) {
+			if (chip8.Display.Modified) {
 				fps++;
-				screen.Render(chip8.Gfx());
+				screen.Render(chip8.Display);
 				keyboard.Render();
 	
 				// Present the screen
 				graphics.SwapBuffers ();
-				
-				//System.Console.WriteLine("RENDER");
-				
-				chip8.DrawFlag = false;
 			}
 		}
 	}

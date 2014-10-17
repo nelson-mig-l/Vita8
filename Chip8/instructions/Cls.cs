@@ -12,9 +12,7 @@ namespace Chip8
 		
 		public override void Execute(Chip8 chip8)
 		{
-			for (int i = 0; i < 2048; i++)
-				chip8.gfx[i] = 0x0;
-			chip8.drawFlag = true;
+			chip8.Display.Clear();
 			chip8.programCounter += 2;			
 		}
 	}

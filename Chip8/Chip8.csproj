@@ -74,6 +74,7 @@
     <Compile Include="instructions\LdBVx.cs" />
     <Compile Include="instructions\LdIVx.cs" />
     <Compile Include="instructions\LdVxI.cs" />
+    <Compile Include="Display.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="instructions\" />

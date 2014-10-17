@@ -28,24 +28,26 @@ namespace Vita8
 			this.y = y;
 		}
 		
-		public void Render(byte[] gfx) 
+		public void Render(Chip8.Display display) 
 		{
-			for (int row = 0; row < 32; row++)
+			if (display.Modified)
 			{
-				for (int col = 0; col < 64; col++)
+				int[] modified = display.GetModified();
+				foreach (int index in modified)
 				{
-					if (gfx[row * 64 + col] == 0)
+					int col = index % 64;
+					int row = index / 64;
+					if (display.Get(index) == 0)
 					{
 						Vita8Graphics.FillRect(COLOR_OFF, x+col*pixelSize, y+row*pixelSize, pixelSize, pixelSize);	
 					}
 					else
 					{
-						Vita8Graphics.FillRect(COLOR_ON, x+col*pixelSize, y+row*pixelSize, pixelSize, pixelSize);	
+						Vita8Graphics.FillRect(COLOR_ON, x+col*pixelSize, y+row*pixelSize, pixelSize, pixelSize);
 					}
 				}
 			}
 		}
-		
 	}
 }
 

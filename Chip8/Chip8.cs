@@ -25,8 +25,7 @@ namespace Chip8
 		    0xF0, 0x80, 0xF0, 0x80, 0x80  //F
 		};
 		
-		internal bool drawFlag;
-		internal byte[] gfx = new byte[64*32];
+		internal Display display;
 		// XXX: Public?
 		public byte[] key = new byte[16];
 		
@@ -65,6 +64,8 @@ namespace Chip8
 			};
 			
 			clock.Enabled = true;
+			
+			display = new Display(64, 32);
 			//rand.NextBytes
 			Init();
 		}
@@ -99,14 +100,10 @@ namespace Chip8
 			
 			return true;
 		}
-		
-		public bool DrawFlag {
-			get { return this.drawFlag; }
-			set { this.drawFlag = value; }
-		}
-		
-		public byte[] Gfx() {
-			return this.gfx;
+
+		public Display Display 
+		{
+			get { return display; }
 		}
 		
 		public byte Key(int key) {
@@ -119,11 +116,8 @@ namespace Chip8
 			this.opcode = 0;
 			this.indexRegister = 0;
 			this.stackPointer = 0;
-			
-			for (int i = 0; i < 2048; i++)
-			{
-				this.gfx[i] = 0;
-			}
+
+			display.Reset();
 			
 			for (int i = 0; i < 16; i++)
 			{
@@ -148,7 +142,6 @@ namespace Chip8
 			this.delayTimer = 0;
 			this.soundTimer = 0;
 			
-			this.drawFlag = true;
 		}
 		
 	}
