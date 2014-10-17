@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ECD760D4-0344-44CD-9503-D3A7EE12F81A}</ProjectGuid>
+    <ProjectTypeGuids>{69878862-DA7D-4DC6-B0A1-50D8FAB4242F};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Vita8</RootNamespace>
+    <AssemblyName>Vita8</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Sce.PlayStation.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppMain.cs" />
+    <Compile Include="Vita8Graphics.cs" />
+    <Compile Include="Vita8ShaderHelper.cs" />
+    <Compile Include="Screen.cs" />
+    <Compile Include="Keyboard.cs" />
+    <Compile Include="Emulator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PsmMetadata Include="app.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="roms\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chip8\Chip8.csproj">
+      <Project>{04110C99-C268-4C7E-8D17-6A0C1425DBB1}</Project>
+      <Name>Chip8</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="roms\15puzzle.rom" />
+    <None Include="roms\blinky.rom" />
+    <None Include="roms\breakout.rom" />
+    <None Include="roms\hidden.rom" />
+    <None Include="roms\kaleid.rom" />
+    <None Include="roms\maze.rom" />
+    <None Include="roms\missile.rom" />
+    <None Include="roms\squash.rom" />
+    <None Include="roms\syzygy.rom" />
+    <None Include="roms\tictac.rom" />
+    <None Include="roms\vbrix.rom" />
+    <None Include="roms\wall.rom" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="roms\guess.rom" />
+    <Content Include="roms\pong.rom" />
+    <Content Include="roms\tetris.rom" />
+    <Content Include="roms\pong2.rom" />
+    <Content Include="roms\tank.rom" />
+    <Content Include="roms\blitz.rom" />
+    <Content Include="roms\invaders.rom" />
+    <Content Include="roms\merlin.rom" />
+    <Content Include="roms\wipeoff.rom" />
+    <Content Include="roms\ufo.rom" />
+    <Content Include="roms\brix.rom" />
+    <Content Include="roms\vers.rom" />
+    <Content Include="roms\puzzle.rom" />
+    <Content Include="roms\connect4.rom" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedShaderProgram Include="shaders\Simple.fcg" />
+    <EmbeddedShaderProgram Include="shaders\Simple.vcg" />
+    <EmbeddedShaderProgram Include="shaders\Texture.fcg" />
+    <EmbeddedShaderProgram Include="shaders\Texture.vcg" />
+  </ItemGroup>
+</Project>

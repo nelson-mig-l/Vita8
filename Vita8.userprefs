@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\AppMain.cs">
+    <Files>
+      <File FileName="Vita8\AppMain.cs" Line="74" Column="5" />
+      <File FileName="Vita8\Screen.cs" Line="15" Column="21" />
+      <File FileName="Chip8\Chip8.cs" Line="57" Column="5" />
+      <File FileName="Chip8\InstructionSet.cs" Line="33" Column="54" />
+      <File FileName="Vita8\Keyboard.cs" Line="10" Column="23" />
+      <File FileName="Vita8\Emulator.cs" Line="8" Column="25" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

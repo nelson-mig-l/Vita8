@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{04110C99-C268-4C7E-8D17-6A0C1425DBB1}</ProjectGuid>
+    <ProjectTypeGuids>{69878862-DA7D-4DC6-B0A1-50D8FAB4242F};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Chip8</RootNamespace>
+    <AssemblyName>Chip8</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Sce.PlayStation.Core" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Chip8.cs" />
+    <Compile Include="InstructionSet.cs" />
+    <Compile Include="instructions\Instruction.cs" />
+    <Compile Include="instructions\AddVxVy.cs" />
+    <Compile Include="instructions\AndVxVy.cs" />
+    <Compile Include="instructions\Cls.cs" />
+    <Compile Include="instructions\OrVxVy.cs" />
+    <Compile Include="instructions\ShlVx.cs" />
+    <Compile Include="instructions\ShrVx.cs" />
+    <Compile Include="instructions\SubVxVy.cs" />
+    <Compile Include="instructions\XorVxVy.cs" />
+    <Compile Include="instructions\Ret.cs" />
+    <Compile Include="instructions\JpAddr.cs" />
+    <Compile Include="instructions\CallAddr.cs" />
+    <Compile Include="instructions\SeVxByte.cs" />
+    <Compile Include="instructions\SneVxByte.cs" />
+    <Compile Include="instructions\SeVxVy.cs" />
+    <Compile Include="instructions\LdVxByte.cs" />
+    <Compile Include="instructions\AddVxByte.cs" />
+    <Compile Include="instructions\LdVxVy.cs" />
+    <Compile Include="instructions\SubnVxVy.cs" />
+    <Compile Include="instructions\SneVxVy.cs" />
+    <Compile Include="instructions\LdIAddr.cs" />
+    <Compile Include="instructions\JpV0Addr.cs" />
+    <Compile Include="instructions\RndVxByte.cs" />
+    <Compile Include="instructions\DrwVxVyNibble.cs" />
+    <Compile Include="instructions\SkpVx.cs" />
+    <Compile Include="instructions\SknpVx.cs" />
+    <Compile Include="instructions\LdVxDt.cs" />
+    <Compile Include="instructions\LdVxK.cs" />
+    <Compile Include="instructions\LdDtVx.cs" />
+    <Compile Include="instructions\LdStVx.cs" />
+    <Compile Include="instructions\AddIVx.cs" />
+    <Compile Include="instructions\LdFVx.cs" />
+    <Compile Include="instructions\LdBVx.cs" />
+    <Compile Include="instructions\LdIVx.cs" />
+    <Compile Include="instructions\LdVxI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="instructions\" />
+  </ItemGroup>
+</Project>
