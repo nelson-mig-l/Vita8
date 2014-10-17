@@ -8,9 +8,7 @@ namespace Chip8
 		private static string ASSEMBLER = "JP {1}{2}{3}";
 		private static string DESCRIPTION = "Jump to location nnn";
 		
-		public JpAddr () : base(CODE, ASSEMBLER, DESCRIPTION)
-		{
-		}
+		public JpAddr () : base(CODE, ASSEMBLER, DESCRIPTION) {}
 		
 		public override void Execute(Chip8 chip8)
 		{

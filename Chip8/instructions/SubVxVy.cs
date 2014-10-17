@@ -14,8 +14,8 @@ namespace Chip8
 		{
 			int x = (chip8.opcode & 0x0F00) >> 8;
 			int y = (chip8.opcode & 0x00F0) >> 4;
-			bool carry = !(chip8.v[y] > chip8.v[x]);
-			chip8.v[0xF] = Convert.ToByte(carry);					
+			bool carry = chip8.v[y] > chip8.v[x];
+			chip8.v[0xF] = Convert.ToByte(!carry);					
 			chip8.v[x] -= chip8.v[y];
 			chip8.programCounter += 2;
 		}

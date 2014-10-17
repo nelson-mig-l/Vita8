@@ -15,7 +15,7 @@ namespace Chip8
 			bool keyPress = false;
 			int x = (chip8.opcode & 0x0F00) >> 8;
 
-			for(int i = 0; i < 16; ++i)
+			for(int i = 0; i < 16; i++)
 			{
 				if(chip8.key[i] != 0)
 				{

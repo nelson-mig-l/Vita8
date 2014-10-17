@@ -13,12 +13,12 @@ namespace Chip8
 		public override void Execute(Chip8 chip8)
 		{
 			int x = (chip8.opcode & 0x0F00) >> 8;
-			for (int i = 0; i <= x; ++i)
+			for (int i = 0; i <= x; i++)
 			{
-				chip8.v[i] = chip8.memory[chip8.indexRegister+ i];			
+				chip8.v[i] = chip8.memory[chip8.indexRegister + i];			
 			}
 			// On the original interpreter, when the operation is done, I = I + X + 1.
-			chip8.indexRegister+= (ushort)(x + 1);
+			chip8.indexRegister += (ushort)(x + 1);
 			chip8.programCounter += 2;			
 		}
 	}

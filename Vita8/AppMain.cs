@@ -1,3 +1,4 @@
+#define DEBUG
 using System;
 using System.Collections.Generic;
 using System.Timers;
@@ -21,33 +22,33 @@ namespace Vita8
 		private static Screen screen = new Screen(160, 0, 10);
 		private static Keyboard keyboard = new Keyboard(368, 320, 56);
 		
-		//private static System.Timers.Timer refreshRate = new System.Timers.Timer(1000/60); // 60Hz
+		private static System.Timers.Timer refreshRate = new System.Timers.Timer(1000);
 		
 		public static void Main (string[] args)
 		{
 			Initialize();
 			
-			chip8.LoadApplication("/Application/roms/pong.rom");
+			chip8.LoadApplication("/Application/roms/tetris.rom");
 			
-			//Thread newThread = new Thread(Update);
-			//newThread.Start();
-			/*
-			System.Timers.Timer refreshRate = new System.Timers.Timer(1000/60);
-			refreshRate.Elapsed += delegate {
-				Render();
-				System.Console.WriteLine("RENDER");
-			};
-			refreshRate.Enabled = true;
-			*/
 			while (true) {
 				SystemEvents.CheckEvents ();
 				Update ();
 				Render ();
 			}
 		}
-
+		
+		private static int fps = 0;
+		private static int ips = 0;
 		public static void Initialize ()
-		{
+		{			
+#if DEBUG
+			refreshRate.Enabled = true;
+			refreshRate.Elapsed += delegate {
+				System.Console.WriteLine(fps + " FPS "+ ips + " IPS");	
+				fps = 0;
+				ips = 0;
+			};
+#endif
 			// Set up the graphics system
 			graphics = new GraphicsContext ();
 			
@@ -60,7 +61,7 @@ namespace Vita8
 			// var gamePadData = GamePad.GetData (0);
 			//while (true) {
 				chip8.EmulateCycle();
-			
+				ips++;
 				keyboard.Update(chip8);
 			//	Thread.Sleep(1000/1000);
 			//}
@@ -71,7 +72,7 @@ namespace Vita8
 		{
 
 			if (chip8.DrawFlag) {
-
+				fps++;
 				screen.Render(chip8.Gfx());
 				keyboard.Render();
 	
