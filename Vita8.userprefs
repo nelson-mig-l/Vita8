@@ -1,13 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Chip8\Display.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\Screen.cs">
     <Files>
-      <File FileName="Vita8\AppMain.cs" Line="59" Column="4" />
-      <File FileName="Vita8\Speaker.cs" Line="16" Column="4" />
-      <File FileName="c:\Users\dacruzgo\Documents\Projects\Vita8\Chip8\Chip8.cs" Line="80" Column="7" />
-      <File FileName="Vita8\Emulator.cs" Line="8" Column="25" />
-      <File FileName="Vita8\Screen.cs" Line="44" Column="26" />
-      <File FileName="Chip8\Display.cs" Line="53" Column="3" />
+      <File FileName="Chip8\Display.cs" Line="27" Column="25" />
+      <File FileName="Chip8\instructions\DrwVxVyNibble.cs" Line="37" Column="7" />
+      <File FileName="Vita8\AppMain.cs" Line="104" Column="7" />
+      <File FileName="Vita8\Emulator.cs" Line="10" Column="4" />
+      <File FileName="Vita8\Vita8Graphics.cs" Line="62" Column="1" />
+      <File FileName="Vita8\Screen.cs" Line="16" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

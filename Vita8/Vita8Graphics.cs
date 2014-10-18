@@ -23,7 +23,6 @@ namespace Vita8
     	private static Matrix4 viewMatrix;
 		
 		private static VertexBuffer vertices; 
-		private static Texture2D texture;
 		
 		public static void Initialize(GraphicsContext graphics) {
 			Vita8Graphics.graphics = graphics;
@@ -40,7 +39,6 @@ namespace Vita8
 	                                    new Vector3(0, -1, 0));
 			
 			Vita8Graphics.vertices = new VertexBuffer(4, VertexFormat.Float3, VertexFormat.Float2);
-			//			Vita8Graphics.rectVertices.SetVertices(0, new float[]{0,0,0, 1,0,0, 1,1,0, 0,1,0});	
 
 			float[] positions = {
 				0.0f, 0.0f, 0.0f,
@@ -57,8 +55,6 @@ namespace Vita8
 			
 			Vita8Graphics.vertices.SetVertices(0, positions);
 			Vita8Graphics.vertices.SetVertices(1, texcoords);
-			
-			texture = new Texture2D(64, 32, false, PixelFormat.Rgba);
 		}
 		
 	    public static void Terminate()
@@ -116,10 +112,28 @@ namespace Vita8
 	        graphics.DrawArrays(DrawMode.TriangleFan, 0, vertices.VertexCount);
 	    }
 		
-		public static void Render(uint[] pixels, float positionX, float positionY, float scaleX, float scaleY)
+		public static void FillTexture(Texture2D texture, int positionX, int positionY, int rectW, int rectH)
 		{
 	        var transMatrix = Matrix4.Translation(new Vector3(positionX, positionY, 0.0f));
-	        var scaleMatrix = Matrix4.Scale(new Vector3(scaleX, scaleY, 1.0f));
+	        var scaleMatrix = Matrix4.Scale(new Vector3(rectW, rectH, 1.0f));
+	        var modelMatrix = transMatrix * scaleMatrix;
+	
+	        var worldViewProj = projectionMatrix * viewMatrix * modelMatrix;	
+			
+			Vita8Graphics.textureShaderProgram.SetUniformValue(0, ref worldViewProj);
+			Vita8Graphics.graphics.SetShaderProgram(Vita8Graphics.textureShaderProgram);
+			Vita8Graphics.graphics.SetVertexBuffer(0, Vita8Graphics.vertices);
+			Vita8Graphics.graphics.SetTexture(0, texture);
+			Vita8Graphics.graphics.DrawArrays(DrawMode.TriangleFan, 0, vertices.VertexCount);
+		}
+		
+		[Obsolete]
+		private static Texture2D texture = new Texture2D(64, 32, false, PixelFormat.Rgba);
+		[Obsolete]
+		public static void FillTexture(uint[] pixels, int positionX, int positionY, int rectW, int rectH)
+		{
+	        var transMatrix = Matrix4.Translation(new Vector3(positionX, positionY, 0.0f));
+	        var scaleMatrix = Matrix4.Scale(new Vector3(rectW, rectH, 1.0f));
 	        var modelMatrix = transMatrix * scaleMatrix;
 	
 	        var worldViewProj = projectionMatrix * viewMatrix * modelMatrix;	
@@ -129,21 +143,8 @@ namespace Vita8
 			Vita8Graphics.graphics.SetVertexBuffer(0, Vita8Graphics.vertices);
 			Vita8Graphics.graphics.SetTexture(0, texture);
 			Vita8Graphics.texture.SetPixels(0, pixels, 0, 0, 64, 32);
-			Vita8Graphics.graphics.DrawArrays(DrawMode.TriangleFan, 0, vertices.VertexCount);
-		}
-		
-		public static void Render(uint[] pixels)
-		{
-			var worldViewProj = Matrix4.Identity;
-			
-			Vita8Graphics.textureShaderProgram.SetUniformValue(0, ref worldViewProj);
-			Vita8Graphics.graphics.SetShaderProgram(Vita8Graphics.textureShaderProgram);
-			Vita8Graphics.graphics.SetVertexBuffer(0, Vita8Graphics.vertices);
-			Vita8Graphics.graphics.SetTexture(0, texture);
-			Vita8Graphics.texture.SetPixels(0, pixels, 0, 0, 64, 32);
-			Vita8Graphics.graphics.DrawArrays(DrawMode.TriangleStrip, 0, 4);
-		}
-		
+			Vita8Graphics.graphics.DrawArrays(DrawMode.TriangleFan, 0, 4);
+		}		
 	}
 }
 

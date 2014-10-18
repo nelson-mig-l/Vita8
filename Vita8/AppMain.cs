@@ -19,28 +19,29 @@ namespace Vita8
 		
 		private static Chip8.Chip8 chip8 = new Chip8.Chip8();
 		
-		private static Keyboard keyboard = new Keyboard(368, 320, 56);
-		private static Speaker speaker = new Speaker();
+		private static Keyboard keyboard;
+		private static Speaker speaker;
+		private static Screen screen;
 		
 		private static System.Timers.Timer refreshRate = new System.Timers.Timer(1000);
 		
-		public static void Main (string[] args)
+		public static void Main(string[] args)
 		{
 			Initialize();
 			
 			chip8.LoadApplication("/Application/roms/tetris.rom");
 			
 			while (true) {
-				SystemEvents.CheckEvents ();
-				Update ();
-				Render ();
+				SystemEvents.CheckEvents();
+				Update();
+				Render();
 			}
 		}
 		
 		private static int realfps = 0;
 		private static int fps = 0;
 		private static int ips = 0;
-		public static void Initialize ()
+		public static void Initialize()
 		{			
 #if DEBUG
 			refreshRate.Enabled = true;
@@ -52,12 +53,15 @@ namespace Vita8
 			};
 #endif
 			// Set up the graphics system
-			graphics = new GraphicsContext ();
-			
+			graphics = new GraphicsContext();
 			Vita8Graphics.Initialize(graphics);
+			
+			keyboard = new Keyboard(368, 320, 56);
+			speaker = new Speaker();
+			screen = new Screen(64, 32, 10);
 		}
 
-		public static void Update ()
+		public static void Update()
 		{
 			// Query gamepad for current state
 			// var gamePadData = GamePad.GetData (0);
@@ -80,7 +84,8 @@ namespace Vita8
 				
 				keyboard.Render();
 				speaker.Render(chip8);
-				
+				screen.Render(chip8.Display);
+				/*
 				byte[,] input = chip8.Display.GetAll();
 				uint[] output = new uint[input.Length];
 				int i = 0;
@@ -99,9 +104,7 @@ namespace Vita8
 						i++;
 					}
 				}
-				
-				Vita8Graphics.Render(output, 160, 0, 640, 320);
-				
+				*/
 				// Present the screen
 				graphics.SwapBuffers ();
 			}
