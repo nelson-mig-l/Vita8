@@ -46,6 +46,12 @@ namespace Chip8
 			return this.gfx[i];
 		}
 		
+		public byte[] GetAll()
+		{
+			modified = false;
+			return this.gfx;
+		}
+		
 		public int Columns 
 		{
 			get { return columns; }
@@ -64,6 +70,7 @@ namespace Chip8
 		public int[] GetModified()
 		{
 			int[] rv = modifiedPixels.ToArray();
+			//modifiedPixels.Clear();
 			modified = false;
 			return rv;
 		}

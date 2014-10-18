@@ -77,13 +77,13 @@ namespace Chip8
 			this.opcode = (ushort)(this.memory[this.programCounter] << 8 | this.memory[this.programCounter + 1]);
 			
 			Instruction instruction = InstructionSet.GetInstruction(this.opcode);
-			/*			
+						
 			int na = (opcode & 0xF000) >> 12;
 			int nb = (opcode & 0x0F00) >> 8;
 			int nc = (opcode & 0x00F0) >> 4;
 			int nd = (opcode & 0x000F);
-			System.Console.WriteLine(string.Format(instruction.Assembler(), na, nb, nc, nd));
-			*/
+			//System.Console.WriteLine(string.Format(instruction.Assembler(), na, nb, nc, nd));
+			
 			instruction.Execute(this);
 		}
 		
@@ -116,6 +116,11 @@ namespace Chip8
 		public Keypad Keypad
 		{
 			get { return keypad; }
+		}
+		
+		public bool Beep
+		{
+			get { return soundTimer > 0; }
 		}
 		
 		private void Init()

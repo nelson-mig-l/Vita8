@@ -33,18 +33,21 @@ namespace Vita8
 			if (display.Modified)
 			{
 				int[] modified = display.GetModified();
+				uint color;
+				if (modified.Length > 0) Console.WriteLine(modified.Length);
 				foreach (int index in modified)
 				{
 					int col = index % display.Columns;
 					int row = index / display.Columns;
 					if (display.Get(index) == 0)
 					{
-						Vita8Graphics.FillRect(COLOR_OFF, x+col*pixelSize, y+row*pixelSize, pixelSize, pixelSize);	
+						color = COLOR_OFF;	
 					}
 					else
 					{
-						Vita8Graphics.FillRect(COLOR_ON, x+col*pixelSize, y+row*pixelSize, pixelSize, pixelSize);
+						color = COLOR_ON;
 					}
+					Vita8Graphics.FillRect(color, x+col*pixelSize, y+row*pixelSize, pixelSize, pixelSize);
 				}
 			}
 		}

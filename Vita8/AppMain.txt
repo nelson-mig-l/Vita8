@@ -1,3 +1,4 @@
+
 #define DEBUG
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Vita8
 		{
 			Initialize();
 			
-			chip8.LoadApplication("/Application/roms/tetris.rom");
+			chip8.LoadApplication("/Application/roms/brix.rom");
 			
 			while (true) {
 				SystemEvents.CheckEvents ();
@@ -76,33 +77,14 @@ namespace Vita8
 			realfps++;
 			if (chip8.Display.Modified) {
 				fps++;
-				graphics.Clear();
-				
-				
+				screen.Render(chip8.Display);
 				keyboard.Render();
+	
 				speaker.Render(chip8);
-				
-				byte[] input = chip8.Display.GetAll();
-				uint[] output = new uint[input.Length];
-				for (int i = 0; i < input.Length; i++)
-				{
-					if (input[i] == 0)
-					{
-						output[i] = 0x00000000;
-					}
-					else
-					{
-						output[i] = 0xFFFFFFFF;
-					}
-				}
-				
-				Vita8Graphics.Render(output, 0, 0, 640, 320);
 				
 				// Present the screen
 				graphics.SwapBuffers ();
 			}
 		}
-
 	}
-	
 }
