@@ -19,7 +19,6 @@ namespace Vita8
 		
 		private static Chip8.Chip8 chip8 = new Chip8.Chip8();
 		
-		private static Screen screen = new Screen(160, 0, 10);
 		private static Keyboard keyboard = new Keyboard(368, 320, 56);
 		private static Speaker speaker = new Speaker();
 		
@@ -82,21 +81,26 @@ namespace Vita8
 				keyboard.Render();
 				speaker.Render(chip8);
 				
-				byte[] input = chip8.Display.GetAll();
+				byte[,] input = chip8.Display.GetAll();
 				uint[] output = new uint[input.Length];
-				for (int i = 0; i < input.Length; i++)
+				int i = 0;
+				for (int row = 0; row < 32; row++)
 				{
-					if (input[i] == 0)
+					for (int col = 0; col < 64; col++)
 					{
-						output[i] = 0x00000000;
-					}
-					else
-					{
-						output[i] = 0xFFFFFFFF;
+						if (input[col, row] == 0)
+						{
+							output[i] = 0xFF663300;
+						}
+						else
+						{
+							output[i] = 0xFFFFFFFF;
+						}
+						i++;
 					}
 				}
 				
-				Vita8Graphics.Render(output, 0, 0, 640, 320);
+				Vita8Graphics.Render(output, 160, 0, 640, 320);
 				
 				// Present the screen
 				graphics.SwapBuffers ();

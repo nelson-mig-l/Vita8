@@ -5,27 +5,27 @@ namespace Chip8
 {
 	public class Display
 	{
-		private byte[] gfx; //= new byte[64*32]
-		private int columns;
-		private int rows;
+		private byte[,] gfx;
+		private int width;
+		private int height;
 		private bool modified = false;
-		private List<int> modifiedPixels;
 		
-		public Display(int columns, int rows)
+		public Display(int width, int height)
 		{
-			this.columns = columns;
-			this.rows = rows;
-			this.gfx = new byte[columns * rows];
-			this.modifiedPixels = new List<int>(columns * rows);
+			this.width = width;
+			this.height = height;
+			this.gfx = new byte[width, height];
 			this.Reset();
 		}
 		
 		public void Clear()
 		{
-			for (int i = 0; i < columns * rows; i++)
+			for (int y = 0; y < height; y++)
 			{
-				this.gfx[i] = 0;
-				this.modifiedPixels.Add(i);
+				for (int x = 0; x < width; x++)
+				{
+					this.gfx[x, y] = 0;
+				}
 			}
 			modified = true;
 		}
@@ -35,44 +35,36 @@ namespace Chip8
 			Clear();
 		}
 		
-		internal void Set(int i, byte v)
+		internal void Set(int col, int row, byte v)
 		{
-			this.gfx[i] = v;
+			this.gfx[col, row] = v;
 			modified = true;
 		}
 		
-		public byte Get(int i)
+		public byte Get(int col, int row)
 		{
-			return this.gfx[i];
+			return this.gfx[col, row];
 		}
 		
-		public byte[] GetAll()
+		public byte[,] GetAll()
 		{
 			modified = false;
 			return this.gfx;
 		}
 		
-		public int Columns 
+		public int Width 
 		{
-			get { return columns; }
+			get { return width; }
 		}
 		
-		public int Rows
+		public int Height
 		{
-			get { return rows; }
+			get { return height; }
 		}
 		
 		public bool Modified
 		{
 			get { return modified; }
-		}
-		
-		public int[] GetModified()
-		{
-			int[] rv = modifiedPixels.ToArray();
-			//modifiedPixels.Clear();
-			modified = false;
-			return rv;
 		}
 	}
 }

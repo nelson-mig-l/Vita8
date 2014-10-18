@@ -39,7 +39,6 @@
     <Compile Include="AppMain.cs" />
     <Compile Include="Vita8Graphics.cs" />
     <Compile Include="Vita8ShaderHelper.cs" />
-    <Compile Include="Screen.cs" />
     <Compile Include="Keyboard.cs" />
     <Compile Include="Emulator.cs" />
     <Compile Include="Speaker.cs" />

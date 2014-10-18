@@ -15,25 +15,25 @@ namespace Chip8
 			int x = (chip8.opcode & 0x0F00) >> 8;
 			int y = (chip8.opcode & 0x00F0) >> 4;
 			int height = chip8.opcode & 0x000F;
-			ushort row = chip8.v[x];
-			ushort col = chip8.v[y];
+			ushort xx = chip8.v[x];
+			ushort yy = chip8.v[y];
 			
-			ushort pixel;
-
-			chip8.v[0xF] = 0;
-			for (int yline = 0; yline < height; yline++)
+			chip8.v[0xF] = 0; // no colision
+			for (int h = 0; h < height; h++)
 			{
-				pixel = chip8.memory[chip8.indexRegister + yline];
-				for(int xline = 0; xline < 8; xline++)
+				ushort pixel = chip8.memory[chip8.indexRegister + h];
+				for(int w = 0; w < 8; w++)
 				{
-					if((pixel & (0x80 >> xline)) != 0)
+					if((pixel & (0x80 >> w)) != 0)
 					{
-						int index = row + xline + ((col + yline) * 64);
-						if(chip8.Display.Get(index) == 1)
+						int xw = xx + w;
+						int yh = yy + h;
+						byte state = chip8.Display.Get(xw, yh);
+						if (state == 1)
 						{
-							chip8.v[0xF] = 1;                                    
+							chip8.v[0xF] = 1; // colision                                  
 						}
-						chip8.Display.Set(index, (byte)(chip8.Display.Get(index) ^ 1));
+						chip8.Display.Set(xw, yh , (byte)(state ^ 1));
 					}
 				}
 			}
