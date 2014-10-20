@@ -1,4 +1,4 @@
-#define DEBUG
+//#define DEBUG
 using System;
 using System.Collections.Generic;
 using System.Timers;
@@ -23,7 +23,7 @@ namespace Vita8
 		private static Speaker speaker;
 		private static Screen screen;
 		
-		private static System.Timers.Timer refreshRate = new System.Timers.Timer(1000);
+		private static System.Timers.Timer performanceTimer = new System.Timers.Timer(1000);
 		
 		public static void Main(string[] args)
 		{
@@ -44,14 +44,15 @@ namespace Vita8
 		public static void Initialize()
 		{			
 #if DEBUG
-			refreshRate.Enabled = true;
-			refreshRate.Elapsed += delegate {
+			performanceTimer.Enabled = true;
+			performanceTimer.Elapsed += delegate {
 				System.Console.WriteLine("FPS(" + fps + "/" + realfps + ") IPS=" + ips + "");	
 				realfps = 0;
 				fps = 0;
 				ips = 0;
 			};
 #endif
+		
 			// Set up the graphics system
 			graphics = new GraphicsContext();
 			Vita8Graphics.Initialize(graphics);
@@ -62,15 +63,20 @@ namespace Vita8
 		}
 
 		public static void Update()
-		{
-			// Query gamepad for current state
-			// var gamePadData = GamePad.GetData (0);
-			//while (true) {
+		{		
+			
 				chip8.EmulateCycle();
+			
+			
+				Thread.Sleep(1000/300);
+			
 				ips++;
+			
+				UpdateKeys();
+			
+			
 				keyboard.Update(chip8);
-			//	Thread.Sleep(1000/1000);
-			//}
+
 		}
 		
 		
@@ -108,6 +114,27 @@ namespace Vita8
 				// Present the screen
 				graphics.SwapBuffers ();
 			}
+		}
+		
+		private static void UpdateKeys() {
+			// 4 - Rotate
+			chip8.Keypad.Set(0x4, IsPressed(GamePadButtons.Cross));
+			// 5 - Left
+			chip8.Keypad.Set(0x5, IsPressed(GamePadButtons.Left));
+			// 6 - Right
+			chip8.Keypad.Set(0x6, IsPressed(GamePadButtons.Right));
+			// 7 - Down
+			chip8.Keypad.Set(0x7, IsPressed(GamePadButtons.Down));
+			
+		}
+		
+		private static bool IsPressed(GamePadButtons button) 
+		{
+			var gamePadData = GamePad.GetData(0);
+			if((gamePadData.Buttons & button) == button) {
+				return true;
+			}
+			return false;
 		}
 
 	}

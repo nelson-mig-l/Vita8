@@ -1,14 +1,27 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\Screen.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\AppMain.cs">
     <Files>
-      <File FileName="Chip8\Display.cs" Line="27" Column="25" />
-      <File FileName="Chip8\instructions\DrwVxVyNibble.cs" Line="37" Column="7" />
-      <File FileName="Vita8\AppMain.cs" Line="104" Column="7" />
-      <File FileName="Vita8\Emulator.cs" Line="10" Column="4" />
-      <File FileName="Vita8\Vita8Graphics.cs" Line="62" Column="1" />
-      <File FileName="Vita8\Screen.cs" Line="16" Column="3" />
+      <File FileName="Vita8\Vita8Graphics.cs" Line="103" Column="28" />
+      <File FileName="Vita8\AppMain.cs" Line="27" Column="3" />
+      <File FileName="Chip8\Chip8.cs" Line="79" Column="34" />
+      <File FileName="Vita8\Screen.cs" Line="19" Column="29" />
+      <File FileName="c:\Users\dacruzgo\Documents\Projects\Vita8\Chip8\Display.cs" Line="46" Column="1" />
+      <File FileName="c:\Users\dacruzgo\Documents\Projects\Vita8\Chip8\instructions\DrwVxVyNibble.cs" Line="26" Column="6" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Chip8" expanded="True">
+            <Node name="instructions" expanded="True" selected="True" />
+          </Node>
+          <Node name="Vita8" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

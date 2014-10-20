@@ -85,6 +85,7 @@ namespace Vita8
 						switch (touchData.Status)
 						{
 						case TouchStatus.Up:
+							System.Console.WriteLine(btn.id + " is pressed");
 							chip8.Keypad.Set(btn.id, false);
 							//chip8.key[btn.id] = 0;
 							//System.Console.WriteLine("UP" + btn.id);

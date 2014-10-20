@@ -10,8 +10,8 @@ namespace Vita8
 {
 	public class Screen
 	{
-		private static uint COLOR_OFF = 0xFF000066;
-		private static uint COLOR_ON = 0xFF0066FF;
+		private static uint COLOR_OFF = 0xFF660000;
+		private static uint COLOR_ON = 0xFFFF6600;
 		
 		private int pixelSize;
 		private int width;

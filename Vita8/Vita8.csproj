@@ -63,12 +63,10 @@
     <None Include="roms\breakout.rom" />
     <None Include="roms\hidden.rom" />
     <None Include="roms\kaleid.rom" />
-    <None Include="roms\maze.rom" />
     <None Include="roms\missile.rom" />
     <None Include="roms\squash.rom" />
     <None Include="roms\syzygy.rom" />
     <None Include="roms\tictac.rom" />
-    <None Include="roms\vbrix.rom" />
     <None Include="roms\wall.rom" />
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +87,8 @@
     <Content Include="assets\Square_1000Hz_-3dBFS_1s.wav" />
     <Content Include="assets\Square_500Hz_-10dBFS_1s.wav" />
     <Content Include="roms\blinky.rom" />
+    <Content Include="roms\maze.rom" />
+    <Content Include="roms\vbrix.rom" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedShaderProgram Include="shaders\Simple.fcg" />
