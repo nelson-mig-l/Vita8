@@ -5,7 +5,7 @@ namespace Chip8
 	public class AddVxByte : Instruction
 	{
 		private static string CODE = "7xkk";
-		private static string ASSEMBLER = "ADD V{1}, {2}{3}";
+		private static string ASSEMBLER = "ADD V{1}, 0x{2}{3}";
 		private static string DESCRIPTION = "Set Vx = Vx + kk";
 
 		public AddVxByte () : base(CODE, ASSEMBLER, DESCRIPTION) {}

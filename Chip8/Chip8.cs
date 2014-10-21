@@ -82,16 +82,21 @@ namespace Chip8
 			int nb = (opcode & 0x0F00) >> 8;
 			int nc = (opcode & 0x00F0) >> 4;
 			int nd = (opcode & 0x000F);
-			//System.Console.WriteLine(string.Format(instruction.Assembler(), na.ToString("X"), nb.ToString("X"), nc.ToString("X"), nd.ToString("X")));
+			System.Console.WriteLine("0x" + programCounter.ToString("X4") + ": " + string.Format(instruction.Assembler(), na.ToString("X"), nb.ToString("X"), nc.ToString("X"), nd.ToString("X")));
 			
-			instruction.Execute(this);
-		}
-		
-		public void DebugRender()
-		{
+			try 
+			{
+				instruction.Execute(this);
+			}
+			catch
+			{
+				for (int i = 0; i <= 0xF; i++)
+					System.Console.WriteLine(string.Format("V[{0}]:{1}", i.ToString("X"), v[i]));
+				throw new Exception();
+			}
 			
 		}
-		
+				
 		public bool LoadApplication(string filename)
 		{
 			// load binary file

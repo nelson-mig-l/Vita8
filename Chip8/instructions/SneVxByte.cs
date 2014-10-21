@@ -5,7 +5,7 @@ namespace Chip8
 	public class SneVxByte : Instruction
 	{
 		private static string CODE = "4xkk";
-		private static string ASSEMBLER = "SNE V{1}, {2}{3}";
+		private static string ASSEMBLER = "SNE V{1}, 0x{2}{3}";
 		private static string DESCRIPTION = "Skip next instruction if Vx != kk";
 
 		public SneVxByte() : base(CODE, ASSEMBLER, DESCRIPTION)	{}

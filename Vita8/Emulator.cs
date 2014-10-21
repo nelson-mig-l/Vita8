@@ -6,12 +6,38 @@ namespace Vita8
 	{
 		private Keyboard keyboard;
 		
-		public Emulator ()
+		public Emulator()
 		{
 			
 		}
 		
-		public void Run () {
+		public void Load(string rom) 
+		{
+			
+		}
+		
+		public void Update()
+		{
+			
+		}
+		
+		public void Render()
+		{
+			
+		}
+		
+		public void Pause()
+		{
+			
+		}
+		
+		public void Resume()
+		{
+			
+		}
+		
+		public void Reset()
+		{
 			
 		}
 	}

@@ -5,7 +5,7 @@ namespace Chip8
 	public class CallAddr : Instruction
 	{
 		private static string CODE = "2nnn";
-		private static string ASSEMBLER = "CALL {1}{2}{3}";
+		private static string ASSEMBLER = "CALL 0x{1}{2}{3}";
 		private static string DESCRIPTION = "Call subroutine at nnn";
 		
 		public CallAddr () : base(CODE, ASSEMBLER, DESCRIPTION)	{}

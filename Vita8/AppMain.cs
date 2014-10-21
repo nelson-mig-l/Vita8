@@ -29,7 +29,7 @@ namespace Vita8
 		{
 			Initialize();
 			
-			chip8.LoadApplication("/Application/roms/tetris.rom");
+			chip8.LoadApplication("/Application/roms/vbrix.rom");
 			
 			while (true) {
 				SystemEvents.CheckEvents();
@@ -118,13 +118,13 @@ namespace Vita8
 		
 		private static void UpdateKeys() {
 			// 4 - Rotate
-			chip8.Keypad.Set(0x4, IsPressed(GamePadButtons.Cross));
+			//chip8.Keypad.Set(0x4, IsPressed(GamePadButtons.Cross));
 			// 5 - Left
-			chip8.Keypad.Set(0x5, IsPressed(GamePadButtons.Left));
+			//chip8.Keypad.Set(0x5, IsPressed(GamePadButtons.Left));
 			// 6 - Right
-			chip8.Keypad.Set(0x6, IsPressed(GamePadButtons.Right));
+			//chip8.Keypad.Set(0x6, IsPressed(GamePadButtons.Right));
 			// 7 - Down
-			chip8.Keypad.Set(0x7, IsPressed(GamePadButtons.Down));
+			//chip8.Keypad.Set(0x7, IsPressed(GamePadButtons.Down));
 			
 		}
 		

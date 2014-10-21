@@ -5,7 +5,7 @@ namespace Chip8
 	public class JpAddr : Instruction
 	{
 		private static string CODE = "1nnn";
-		private static string ASSEMBLER = "JP {1}{2}{3}";
+		private static string ASSEMBLER = "JP 0x{1}{2}{3}";
 		private static string DESCRIPTION = "Jump to location nnn";
 		
 		public JpAddr () : base(CODE, ASSEMBLER, DESCRIPTION) {}

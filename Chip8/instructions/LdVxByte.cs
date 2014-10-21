@@ -5,7 +5,7 @@ namespace Chip8
 	public class LdVxByte : Instruction
 	{
 		private static string CODE = "6xkk";
-		private static string ASSEMBLER = "LD V{1}, {2}{3}";
+		private static string ASSEMBLER = "LD V{1}, 0x{2}{3}";
 		private static string DESCRIPTION = "Set Vx = kk";
 
 		public LdVxByte () : base(CODE, ASSEMBLER, DESCRIPTION)	{}

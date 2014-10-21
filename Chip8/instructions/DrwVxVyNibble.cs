@@ -5,7 +5,7 @@ namespace Chip8
 	public class DrwVxVyNibble : Instruction
 	{
 		private static string CODE = "Dxyn";
-		private static string ASSEMBLER = "DRW V{1}, V{2}, {3}";
+		private static string ASSEMBLER = "DRW V{1}, V{2}, 0x{3}";
 		private static string DESCRIPTION = "Display n-byte sprite starting at memory location I at (Vx, Vy), set VF = collision";
 
 		public DrwVxVyNibble() : base(CODE, ASSEMBLER, DESCRIPTION)	{}
@@ -28,6 +28,8 @@ namespace Chip8
 					{
 						int xw = xx + w;
 						int yh = yy + h;
+						if (xw > 63) continue;
+						if (yh > 31) continue;
 						byte state = chip8.Display.Get(xw, yh);
 						if (state == 1)
 						{

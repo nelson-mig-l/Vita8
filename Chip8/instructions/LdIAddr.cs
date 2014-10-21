@@ -5,7 +5,7 @@ namespace Chip8
 	public class LdIAddr : Instruction
 	{
 		private static string CODE = "Annn";
-		private static string ASSEMBLER = "LD I, {1}{2}{3}";
+		private static string ASSEMBLER = "LD I, 0x{1}{2}{3}";
 		private static string DESCRIPTION = "Set I = nnn";
 		
 		public LdIAddr() : base(CODE, ASSEMBLER, DESCRIPTION) {}

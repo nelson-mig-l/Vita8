@@ -5,7 +5,7 @@ namespace Chip8
 	public class SeVxVy : Instruction
 	{
 		private static string CODE = "5xy0";
-		private static string ASSEMBLER = "SKEQ V{1}, V{2}";
+		private static string ASSEMBLER = "SE V{1}, V{2}";
 		private static string DESCRIPTION = "Skip next instruction if Vx = Vy";
 		
 		public SeVxVy () : base(CODE, ASSEMBLER, DESCRIPTION) {}

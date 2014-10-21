@@ -14,7 +14,7 @@ namespace Chip8
 		{
 			int x = (chip8.opcode & 0x0F00) >> 8;
 			int offset = chip8.v[x] * 0x5;
-			chip8.indexRegister= (ushort)offset;
+			chip8.indexRegister = (ushort)offset;
 			chip8.programCounter += 2;			
 		}		
 		

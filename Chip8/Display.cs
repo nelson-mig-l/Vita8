@@ -34,7 +34,7 @@ namespace Chip8
 		{
 			Clear();
 		}
-		
+
 		internal void Set(int col, int row, byte v)
 		{
 			this.gfx[col, row] = v;
