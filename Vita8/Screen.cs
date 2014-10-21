@@ -18,19 +18,47 @@ namespace Vita8
 		private int height;
 		private Texture2D texture;
 		
+		private uint[] pon = {
+			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
+			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
+			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
+			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
+			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
+			
+			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
+			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
+			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
+			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
+			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON
+		};
+		
+		private uint[] pof = {
+			COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+			COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+			COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+			COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+			COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+			
+			COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+			COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+			COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+			COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+			COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+		};
+		
 		public Screen(int width, int height, int pixelSize)
 		{
 			this.width = width;
 			this.height = height;
 			this.pixelSize = pixelSize;
 			
-			this.texture = new Texture2D(width, height, false, PixelFormat.Rgba);
+			this.texture = new Texture2D(width*pixelSize, height*pixelSize, false, PixelFormat.Rgba);
 		}
 		
 		public void Render(Chip8.Display display) 
 		{
 			byte[,] gfx = display.GetAll();
-			uint[] pixels = new uint[gfx.Length];
+			uint[] pixels = new uint[gfx.Length*pixelSize];
 			
 			int index = 0;
 			for (int row = 0; row < 32; row++)
@@ -40,18 +68,19 @@ namespace Vita8
 					if (gfx[col, row] == 0)
 					{
 						pixels[index] = COLOR_OFF;
+						texture.SetPixels(0, pof, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 					}
 					else
 					{
 						pixels[index] = COLOR_ON;
+						texture.SetPixels(0, pon, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 					}
 					index++;
 				}
 			}
-			texture.SetPixels(0, pixels, 0, 0, width, height);
+			//texture.SetPixels(0, pixels, 0, 0, width, height);
 			Vita8Graphics.FillTexture(texture, 160, 0, 640, 320);
 		}
-
 	}
 }
 
