@@ -1,4 +1,3 @@
-//#define DEBUG
 using System;
 using System.Collections.Generic;
 using System.Timers;
@@ -29,7 +28,7 @@ namespace Vita8
 		{
 			Initialize();
 			
-			chip8.LoadApplication("/Application/roms/tetris.rom");
+			chip8.LoadApplication("/Application/roms/brix.rom");
 			
 			while (true) {
 				SystemEvents.CheckEvents();
@@ -42,8 +41,8 @@ namespace Vita8
 		private static int fps = 0;
 		private static int ips = 0;
 		public static void Initialize()
-		{			
-#if DEBUG
+		{
+/*			
 			performanceTimer.Enabled = true;
 			performanceTimer.Elapsed += delegate {
 				System.Console.WriteLine("FPS(" + fps + "/" + realfps + ") IPS=" + ips + "");	
@@ -51,8 +50,7 @@ namespace Vita8
 				fps = 0;
 				ips = 0;
 			};
-#endif
-		
+*/		
 			// Set up the graphics system
 			graphics = new GraphicsContext();
 			Vita8Graphics.Initialize(graphics);
@@ -68,7 +66,7 @@ namespace Vita8
 				chip8.EmulateCycle();
 			
 			
-				Thread.Sleep(1000/400);
+				Thread.Sleep(1000/600);
 			
 				ips++;
 			
@@ -117,6 +115,7 @@ namespace Vita8
 		}
 		
 		private static void UpdateKeys() {
+			/*
 			// 4 - Rotate
 			chip8.Keypad.Set(0x4, IsPressed(GamePadButtons.Cross));
 			// 5 - Left
@@ -125,7 +124,10 @@ namespace Vita8
 			chip8.Keypad.Set(0x6, IsPressed(GamePadButtons.Right));
 			// 7 - Down
 			chip8.Keypad.Set(0x7, IsPressed(GamePadButtons.Down));
-			
+			*/
+			chip8.Keypad.Set(0x7, IsPressed(GamePadButtons.Cross));
+			chip8.Keypad.Set(0x1, IsPressed(GamePadButtons.Up));
+			chip8.Keypad.Set(0x4, IsPressed(GamePadButtons.Down));
 		}
 		
 		private static bool IsPressed(GamePadButtons button) 

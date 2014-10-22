@@ -68,7 +68,8 @@
     <None Include="roms\syzygy.rom" />
     <None Include="roms\tictac.rom" />
     <None Include="roms\wall.rom" />
-    <None Include="roms\tetris.txt" />
+    <None Include="roms\tetris.xml" />
+    <None Include="roms\vbrix.xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="roms\guess.rom" />

@@ -2,6 +2,7 @@ using System;
 
 namespace Chip8
 {
+	//http://laurencescotford.co.uk/?p=304
 	public class DrwVxVyNibble : Instruction
 	{
 		private static string CODE = "Dxyn";
@@ -21,21 +22,29 @@ namespace Chip8
 			chip8.v[0xF] = 0; // no colision
 			for (int h = 0; h < height; h++)
 			{
-				ushort pixel = chip8.memory[chip8.indexRegister + h];
+				byte spriteLine = chip8.memory[chip8.indexRegister + h];
 				for(int w = 0; w < 8; w++)
 				{
-					if((pixel & (0x80 >> w)) != 0)
+					int xw = xx + w;
+					int yh = yy + h;
+					if (xw > 63) continue;
+					if (yh > 31) continue;
+					
+					if((spriteLine & (0x80 >> w)) != 0)
 					{
-						int xw = xx + w;
-						int yh = yy + h;
-						if (xw > 63) continue;
-						if (yh > 31) continue;
 						byte state = chip8.Display.Get(xw, yh);
 						if (state == 1)
 						{
-							chip8.v[0xF] = 1; // colision                                  
+							chip8.v[0xF] = 1; // colision  
+							//Console.WriteLine("collision@" + xw + "," + yh);
+							chip8.Display.Set(xw, yh , 0);
+						} else {
+						chip8.Display.Set(xw, yh , 1);//(byte)(state ^ 1));
 						}
-						chip8.Display.Set(xw, yh , (byte)(state ^ 1));
+					} 
+					else 
+					{
+						//chip8.Display.Set(xw, yh , 0);
 					}
 				}
 			}

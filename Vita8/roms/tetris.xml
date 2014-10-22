@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	
+	<rom name="Tetris" file="tetris.rom" />
+	
+	<screen>
+		<pixel size="10" />
+		<background color="0xFF003333" />
+		<foreground color="0xFFFFFFFF" />
+	</screen>
+	
+	<keyboard>
+		<key button="Cross" value="4" />
+		<key button="Left" value="5" />
+		<key button="Right" value="6" />
+		<key button="Down" value="7" />
+	</keyboard>
+	
+</configuration>		
+<!--		
+		private static void UpdateKeys() {
+			// 4 - Rotate
+			chip8.Keypad.Set(0x4, IsPressed(GamePadButtons.Cross));
+			// 5 - Left
+			chip8.Keypad.Set(0x5, IsPressed(GamePadButtons.Left));
+			// 6 - Right
+			chip8.Keypad.Set(0x6, IsPressed(GamePadButtons.Right));
+			// 7 - Down
+			chip8.Keypad.Set(0x7, IsPressed(GamePadButtons.Down));
+			
+		}
+-->

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	
+	<rom name="V Brix" file="vbrix.rom" />
+	
+	<screen>
+		<pixel size="10" />
+		<background color="0xFF003333" />
+		<foreground color="0xFFFFFFFF" />
+	</screen>
+	
+	<keyboard>
+		<key button="Cross" value="7" />
+		<key button="Up" value="1" />
+		<key button="Down" value="4" />
+	</keyboard>
+	
+</configuration>

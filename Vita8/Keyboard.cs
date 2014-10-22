@@ -85,13 +85,13 @@ namespace Vita8
 						switch (touchData.Status)
 						{
 						case TouchStatus.Up:
-							System.Console.WriteLine(btn.id + " is pressed");
 							chip8.Keypad.Set(btn.id, false);
 							//chip8.key[btn.id] = 0;
 							//System.Console.WriteLine("UP" + btn.id);
 							break;
 							
 						case TouchStatus.Down:
+							System.Console.WriteLine(btn.id + " is pressed");
 							chip8.Keypad.Set(btn.id, true);
 							//chip8.key[btn.id] = 1;
 							//System.Console.WriteLine("DOWN" + btn.id);
@@ -100,9 +100,6 @@ namespace Vita8
 					}
 				}
 			}
-			//var gamePadData = GamePad.GetData(0);
-			
-			//Input2.GamePad.GetData(0).Left.Down;
 		}
 	}
 }
