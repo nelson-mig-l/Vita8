@@ -7,6 +7,8 @@ using Sce.PlayStation.Core;
 using Sce.PlayStation.Core.Environment;
 using Sce.PlayStation.Core.Graphics;
 using Sce.PlayStation.Core.Input;
+using Sce.PlayStation.HighLevel.GameEngine2D;
+using Sce.PlayStation.HighLevel.GameEngine2D.Base;
 
 using Chip8;
 
@@ -22,9 +24,9 @@ namespace Vita8
 		{
 			Initialize();
 			
-			emulator.Load("/Application/roms/tetris.rom");
+			//emulator.Load("/Application/roms/tetris.rom");
 			
-			emulator.Resume();
+			//emulator.Resume();
 			
 			while (true) {
 				SystemEvents.CheckEvents();
@@ -36,10 +38,17 @@ namespace Vita8
 		public static void Initialize()
 		{
 			// Set up the graphics system
-			graphics = new GraphicsContext();
-			Vita8Graphics.Initialize(graphics);
+			//graphics = new GraphicsContext();
+			//Vita8Graphics.Initialize(graphics);
+			
+			Director.Initialize();
 			
 			emulator = new Emulator();
+			emulator.Load("/Application/roms/tetris.rom");
+			EmulatorScene scene = new EmulatorScene(emulator);
+			scene.Camera.SetViewFromViewport();
+			
+			Director.Instance.RunWithScene(scene);
 		}
 
 		public static void Update()

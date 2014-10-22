@@ -1,6 +1,7 @@
 using System;
 using Sce.PlayStation.Core.Input;
-
+using Sce.PlayStation.Core.Graphics;
+using Sce.PlayStation.Core.Imaging;
 
 namespace Vita8
 {
@@ -54,12 +55,13 @@ namespace Vita8
 			}
 		}
 		
-		public void Render()
+		public Texture2D Render()
 		{
 			speaker.Render(chip8);
 			if (chip8.Display.Modified) {
-				screen.Render(chip8.Display);
+				return screen.Render(chip8.Display);
 			}
+			return null;
 		}
 		
 		public void Pause()

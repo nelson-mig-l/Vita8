@@ -57,18 +57,14 @@ namespace Chip8
 				
 				if (soundTimer > 0)
 				{
-					//if(soundTimer == 1)
-					//	printf("BEEP!\n");
 					--soundTimer;
 				}	
-				//System.Console.Write(".");
 			};
 			
 			clock.Enabled = true;
 			
 			display = new Display(64, 32);
 			keypad = new Keypad(16);
-			//rand.NextBytes
 			Init();
 		}
 		

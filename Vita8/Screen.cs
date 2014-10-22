@@ -55,9 +55,9 @@ namespace Vita8
 			this.texture = new Texture2D(width*pixelSize, height*pixelSize, false, PixelFormat.Rgba);
 		}
 		
-		public void Render(Chip8.Display display) 
+		public Texture2D Render(Chip8.Display display) 
 		{
-			Vita8Graphics.Clear();
+			//Vita8Graphics.Clear();
 			
 			byte[,] gfx = display.GetAll();
 			uint[] pixels = new uint[gfx.Length*pixelSize];
@@ -80,11 +80,12 @@ namespace Vita8
 					index++;
 				}
 			}
-			int upperLeftX = (Vita8Graphics.Width - width * pixelSize) / 2;
-			int upperLeftY = (Vita8Graphics.Height - height * pixelSize) / 2;
-			Vita8Graphics.FillTexture(texture, upperLeftX, upperLeftY, width*pixelSize, height*pixelSize);
+			return texture;
+			//int upperLeftX = (Vita8Graphics.Width - width * pixelSize) / 2;
+			//int upperLeftY = (Vita8Graphics.Height - height * pixelSize) / 2;
+			//Vita8Graphics.FillTexture(texture, upperLeftX, upperLeftY, width*pixelSize, height*pixelSize);
 			
-			Vita8Graphics.SwapBuffers();
+			//Vita8Graphics.SwapBuffers();
 		}
 	}
 }
