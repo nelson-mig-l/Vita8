@@ -127,6 +127,16 @@ namespace Vita8
 			Vita8Graphics.graphics.DrawArrays(DrawMode.TriangleFan, 0, vertices.VertexCount);
 		}
 		
+		public static void Clear()
+		{
+			Vita8Graphics.graphics.Clear();	
+		}
+		
+		public static void SwapBuffers()
+		{
+			Vita8Graphics.graphics.SwapBuffers();
+		}
+		
 		[Obsolete]
 		private static Texture2D texture = new Texture2D(64, 32, false, PixelFormat.Rgba);
 		[Obsolete]

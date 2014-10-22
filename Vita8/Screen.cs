@@ -57,6 +57,8 @@ namespace Vita8
 		
 		public void Render(Chip8.Display display) 
 		{
+			Vita8Graphics.Clear();
+			
 			byte[,] gfx = display.GetAll();
 			uint[] pixels = new uint[gfx.Length*pixelSize];
 			
@@ -81,6 +83,8 @@ namespace Vita8
 			int upperLeftX = (Vita8Graphics.Width - width * pixelSize) / 2;
 			int upperLeftY = (Vita8Graphics.Height - height * pixelSize) / 2;
 			Vita8Graphics.FillTexture(texture, upperLeftX, upperLeftY, width*pixelSize, height*pixelSize);
+			
+			Vita8Graphics.SwapBuffers();
 		}
 	}
 }
