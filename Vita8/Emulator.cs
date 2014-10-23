@@ -7,7 +7,7 @@ using Sce.PlayStation.HighLevel.GameEngine2D;
 
 namespace Vita8
 {
-	public class Emulator
+	public class Emulator : IDisposable 
 	{
 		private Chip8.Chip8 chip8;
 		private Keyboard keyboard;
@@ -18,37 +18,33 @@ namespace Vita8
 		
 		private long next = 0;
 		
-		private Thread thread;
+		private Thread thread = null;
 		
 		public Emulator()
 		{
 			this.chip8 = new Chip8.Chip8();
-			this.keyboard = new Keyboard(368, 320, 56);
+			this.keyboard = new Keyboard();
 			this.speaker = new Speaker();
 			this.screen = new Screen(64, 32, 10);
 			
 			this.running = false;
-			
-			Reset();
 		}
 		
 		public void Load(string rom) 
 		{
-			this.running = false;
-
+			Stop();
+			
 			chip8.LoadApplication(rom);
 		}
 		
-		public void Update()
+		private void Update()
 		{
 			if (running)
 			{
 				keyboard.Update(chip8);
+					
+				speaker.Render(chip8);
 				
-				chip8.Keypad.Set(0x7, IsPressed(GamePadButtons.Cross));
-				chip8.Keypad.Set(0x1, IsPressed(GamePadButtons.Up));
-				chip8.Keypad.Set(0x4, IsPressed(GamePadButtons.Down));
-	
 				long current = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 
 				if (current > next)
@@ -60,7 +56,6 @@ namespace Vita8
 		}
 		
 		public bool Render(Texture2D texture) {
-			speaker.Render(chip8);
 			bool modified = chip8.Display.Modified;
 			if (modified) {
 				screen.Render(chip8.Display, texture);
@@ -68,19 +63,25 @@ namespace Vita8
 			return modified;
 		}
 
-		public void Pause()
+		public void Stop()
 		{
 			running = false;
+			if (thread != null)
+			{
+				thread.Abort();
+				thread.Join();
+				thread = null;
+			}
 		}
 		
-		public void Resume()
+		public void Start()
 		{
 			running = true;
 			thread = new Thread(new ThreadStart(this.UpdateThread));
 			thread.Start();
 		}
 		
-		public void UpdateThread() {
+		private void UpdateThread() {
 			while (true) {
 				this.Update();
 			}
@@ -88,17 +89,15 @@ namespace Vita8
 		
 		public void Reset()
 		{
-			
+			chip8.Reset();
 		}
 		
-		private static bool IsPressed(GamePadButtons button) 
+		public void Dispose() 
 		{
-			var gamePadData = GamePad.GetData(0);
-			if((gamePadData.Buttons & button) == button) {
-				return true;
-			}
-			return false;
+			Console.WriteLine("Dispose Emulator");
+			this.Stop();
 		}
+		
 	}
 }
 

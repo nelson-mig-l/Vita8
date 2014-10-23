@@ -65,7 +65,7 @@ namespace Chip8
 			
 			display = new Display(64, 32);
 			keypad = new Keypad(16);
-			Init();
+			Reset();
 		}
 		
 		public void EmulateCycle()
@@ -95,6 +95,7 @@ namespace Chip8
 				
 		public bool LoadApplication(string filename)
 		{
+			Reset();
 			// load binary file
 			byte[] buffer = File.ReadAllBytes(filename);
 			var len = buffer.Length;
@@ -124,7 +125,7 @@ namespace Chip8
 			get { return soundTimer > 0; }
 		}
 		
-		private void Init()
+		public void Reset()
 		{
 			this.programCounter = 0x200;
 			this.opcode = 0;

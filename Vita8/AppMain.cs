@@ -23,16 +23,6 @@ namespace Vita8
 		public static void Main(string[] args)
 		{
 			Initialize();
-			
-			//emulator.Load("/Application/roms/tetris.rom");
-			
-			//emulator.Resume();
-			
-			while (true) {
-				SystemEvents.CheckEvents();
-				Update();
-				Render();
-			}
 		}
 		
 		private static int fps = 0;
@@ -45,7 +35,7 @@ namespace Vita8
 			Director.Initialize();
 			
 			emulator = new Emulator();
-			emulator.Load("/Application/roms/tetris.rom");
+			emulator.Load("/Application/roms/vbrix.rom");
 			EmulatorScene scene = new EmulatorScene(emulator);
 			scene.Camera.SetViewFromViewport();
 			
@@ -64,23 +54,6 @@ namespace Vita8
 			fps++;
 		}
 		
-		private static void UpdateKeys() {
-			/*
-			// 4 - Rotate
-			chip8.Keypad.Set(0x4, IsPressed(GamePadButtons.Cross));
-			// 5 - Left
-			chip8.Keypad.Set(0x5, IsPressed(GamePadButtons.Left));
-			// 6 - Right
-			chip8.Keypad.Set(0x6, IsPressed(GamePadButtons.Right));
-			// 7 - Down
-			chip8.Keypad.Set(0x7, IsPressed(GamePadButtons.Down));
-			*/
-			/*
-			chip8.Keypad.Set(0x7, IsPressed(GamePadButtons.Cross));
-			chip8.Keypad.Set(0x1, IsPressed(GamePadButtons.Up));
-			chip8.Keypad.Set(0x4, IsPressed(GamePadButtons.Down));
-			*/
-		}
 		
 		private static bool IsPressed(GamePadButtons button) 
 		{

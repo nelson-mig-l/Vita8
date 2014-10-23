@@ -18,6 +18,11 @@ namespace Vita8
 		private SpriteUV sprite;
 		private Texture2D texture;
 		
+		private Label fpsLabel = new Label()
+		{
+			Position = new Vector2(5, 5)	
+		};
+		
 		public EmulatorScene(Emulator emulator)
 		{
 			this.sprite = new SpriteUV();
@@ -26,11 +31,12 @@ namespace Vita8
 			sprite.TextureInfo = texture_info;		
 			sprite.Quad.S = texture_info.TextureSizef; 
 			//sprite.CenterSprite();
-			sprite.Position = new Vector2(0.5f, 0.5f);//this.Camera.CalcBounds().Center;
+			sprite.Position = new Vector2(112.0f, 112.0f);//this.Camera.CalcBounds().Center;
 			this.AddChild( sprite );
 			
 			this.timer.Elapsed += delegate {
-				Console.WriteLine("fps: " + fps + "/" + realfps);
+				//Console.WriteLine("fps: " + fps + "/" + realfps);
+				fpsLabel.Text = "fps: " + fps + "/" + realfps;
 				fps = 0;
 				realfps = 0;
 			};
@@ -38,15 +44,12 @@ namespace Vita8
 			
 			this.emulator = emulator;
 			
-			this.emulator.Resume();
-			
-			Label label = new Label() 
-			{ 
-				Text="Top Left",
-				Position=new Vector2(5, 5) 
-			};
-			this.AddChild(label);
+			this.AddChild(fpsLabel);
 			Scheduler.Instance.ScheduleUpdateForTarget(this, 1, false);
+
+			this.emulator.Start();
+			
+			RegisterDisposeOnExit(this.emulator);
 		}
 		
 		public override void Update(float dt)
@@ -61,12 +64,15 @@ namespace Vita8
 			realfps++;
 			if (emulator.Render(texture))
 			{
-				long start = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 				fps++;
 				base.Draw();
-				long end = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
-				System.Console.WriteLine(end-start);
 			}
+		}
+		
+		public override void OnExit()
+		{
+			this.emulator.Stop();
+			base.OnExit();
 		}
 	}
 }

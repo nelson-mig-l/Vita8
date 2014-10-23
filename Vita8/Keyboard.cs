@@ -42,64 +42,25 @@ namespace Vita8
 		private int y;
 		private List<Btn> btns = new List<Btn>();
 
-		public Keyboard (int x, int y, int buttonSize)
+		public Keyboard ()
 		{
-			//this.buttonSize = buttonSize;
-			this.x = x;
-			this.y = y;
-			
-			for (int row = 0; row < 4; row++)
-			{
-				for (int col = 0; col < 4; col++)
-				{
-					Btn btn = new Btn();
-					btn.id = IDS[row, col];
-					btn.xo = x + col * buttonSize + MARGIN;
-					btn.yo = y + row * buttonSize + MARGIN;
-					this.buttonSize = buttonSize - MARGIN * 2;
-					btn.xi = btn.xo + this.buttonSize;
-					btn.yi = btn.yo + this.buttonSize;
-					
-					btns.Add(btn);
-				}
-			}
 		}
 		
-		public void Render() 
-		{
-			foreach(Btn btn in btns)
-			{
-				Vita8Graphics.FillRect(0xFFFFFFFF, btn.xo, btn.yo, this.buttonSize, this.buttonSize);	
-			}
-		}
 		
 		public void Update(Chip8.Chip8 chip8)
 		{
-			List<TouchData> touchDataList = Touch.GetData(0);
-			foreach (TouchData touchData in touchDataList) 
-			{
-				foreach (Btn btn in btns) 
-				{
-					if (btn.IsInside(touchData))
-					{
-						switch (touchData.Status)
-						{
-						case TouchStatus.Up:
-							chip8.Keypad.Set(btn.id, false);
-							//chip8.key[btn.id] = 0;
-							//System.Console.WriteLine("UP" + btn.id);
-							break;
-							
-						case TouchStatus.Down:
-							System.Console.WriteLine(btn.id + " is pressed");
-							chip8.Keypad.Set(btn.id, true);
-							//chip8.key[btn.id] = 1;
-							//System.Console.WriteLine("DOWN" + btn.id);
-							break;
-						}
-					}
-				}
+			chip8.Keypad.Set(0x7, IsPressed(GamePadButtons.Cross));
+			chip8.Keypad.Set(0x1, IsPressed(GamePadButtons.Up));
+			chip8.Keypad.Set(0x4, IsPressed(GamePadButtons.Down));
+		}
+		
+		private static bool IsPressed(GamePadButtons button) 
+		{
+			var gamePadData = GamePad.GetData(0);
+			if((gamePadData.Buttons & button) == button) {
+				return true;
 			}
+			return false;
 		}
 	}
 }
