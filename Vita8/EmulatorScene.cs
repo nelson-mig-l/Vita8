@@ -11,8 +11,17 @@ namespace Vita8
 	{
 		private Emulator emulator;
 		
+		private System.Timers.Timer timer = new System.Timers.Timer(1000); 
+		private int fps = 0;
+		
 		public EmulatorScene(Emulator emulator)
 		{
+			this.timer.Elapsed += delegate {
+				Console.WriteLine("fps: " + fps);
+				fps = 0;
+			};
+			this.timer.Enabled = true;
+			
 			this.emulator = emulator;
 			
 			this.emulator.Resume();
@@ -38,7 +47,7 @@ namespace Vita8
 			Texture2D texture = emulator.Render();
 			if (texture != null)
 			{
-				
+				fps++;
 				var texture_info = new TextureInfo(texture);
 				
 				// create a new sprite

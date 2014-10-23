@@ -35,6 +35,7 @@ namespace Vita8
 			}
 		}
 		
+		private static int fps = 0;
 		public static void Initialize()
 		{
 			// Set up the graphics system
@@ -60,6 +61,7 @@ namespace Vita8
 		public static void Render ()
 		{
 			emulator.Render();
+			fps++;
 		}
 		
 		private static void UpdateKeys() {
