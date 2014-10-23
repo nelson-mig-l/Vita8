@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Sce.PlayStation.Core.Input;
 using Sce.PlayStation.Core.Graphics;
 using Sce.PlayStation.Core.Imaging;
@@ -16,6 +17,8 @@ namespace Vita8
 		private bool running;
 		
 		private long next = 0;
+		
+		private Thread thread;
 		
 		public Emulator()
 		{
@@ -48,7 +51,7 @@ namespace Vita8
 	
 				long current = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 
-				//if (current > next)
+				if (current > next)
 				{
 					next = current + 1;
 					chip8.EmulateCycle();
@@ -73,6 +76,14 @@ namespace Vita8
 		public void Resume()
 		{
 			running = true;
+			thread = new Thread(new ThreadStart(this.UpdateThread));
+			thread.Start();
+		}
+		
+		public void UpdateThread() {
+			while (true) {
+				this.Update();
+			}
 		}
 		
 		public void Reset()

@@ -45,7 +45,7 @@ namespace Vita8
 			Director.Initialize();
 			
 			emulator = new Emulator();
-			emulator.Load("/Application/roms/vbrix.rom");
+			emulator.Load("/Application/roms/tetris.rom");
 			EmulatorScene scene = new EmulatorScene(emulator);
 			scene.Camera.SetViewFromViewport();
 			

@@ -51,7 +51,7 @@ namespace Vita8
 		
 		public override void Update(float dt)
 		{
-			emulator.Update();
+			//emulator.Update();
 			//elapsedTime += dt;
 			base.Update(dt);
 		}
@@ -61,8 +61,11 @@ namespace Vita8
 			realfps++;
 			if (emulator.Render(texture))
 			{
+				long start = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 				fps++;
 				base.Draw();
+				long end = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+				System.Console.WriteLine(end-start);
 			}
 		}
 	}

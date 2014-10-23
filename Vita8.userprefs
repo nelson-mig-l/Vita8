@@ -2,12 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\EmulatorScene.cs">
     <Files>
-      <File FileName="Vita8\EmulatorScene.cs" Line="34" Column="3" />
-      <File FileName="Vita8\Emulator.cs" Line="59" Column="42" />
-      <File FileName="Chip8\Chip8.cs" Line="112" Column="17" />
-      <File FileName="Chip8\Display.cs" Line="6" Column="15" />
-      <File FileName="Vita8\Screen.cs" Line="53" Column="31" />
-      <File FileName="Vita8\AppMain.cs" Line="56" Column="6" />
+      <File FileName="Vita8\Emulator.cs" Line="87" Column="4" />
+      <File FileName="Vita8\EmulatorScene.cs" Line="68" Column="1" />
+      <File FileName="Vita8\AppMain.cs" Line="20" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
