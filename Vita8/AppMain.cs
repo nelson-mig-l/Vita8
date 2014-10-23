@@ -36,6 +36,7 @@ namespace Vita8
 		}
 		
 		private static int fps = 0;
+		private static int realfps = 0;
 		public static void Initialize()
 		{
 			// Set up the graphics system
@@ -43,8 +44,9 @@ namespace Vita8
 			Vita8Graphics.Initialize(graphics);
 			
 			timer.Elapsed += delegate {
-				Console.WriteLine("fps: " + fps);
+				Console.WriteLine("fps: " + fps + ":" + realfps);
 				fps = 0;
+				realfps = 0;
 			};
 			timer.Enabled = true;
 			
@@ -59,6 +61,7 @@ namespace Vita8
 		
 		public static void Render ()
 		{
+			realfps++;
 			if (emulator.Render())
 			{
 				fps++;
