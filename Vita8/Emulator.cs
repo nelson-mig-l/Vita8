@@ -2,6 +2,7 @@ using System;
 using Sce.PlayStation.Core.Input;
 using Sce.PlayStation.Core.Graphics;
 using Sce.PlayStation.Core.Imaging;
+using Sce.PlayStation.HighLevel.GameEngine2D;
 
 namespace Vita8
 {
@@ -47,7 +48,7 @@ namespace Vita8
 	
 				long current = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 
-				if (current > next)
+				//if (current > next)
 				{
 					next = current + 1;
 					chip8.EmulateCycle();
@@ -55,15 +56,15 @@ namespace Vita8
 			}
 		}
 		
-		public Texture2D Render()
-		{
+		public bool Render(Texture2D texture) {
 			speaker.Render(chip8);
-			if (chip8.Display.Modified) {
-				return screen.Render(chip8.Display);
+			bool modified = chip8.Display.Modified;
+			if (modified) {
+				screen.Render(chip8.Display, texture);
 			}
-			return null;
+			return modified;
 		}
-		
+
 		public void Pause()
 		{
 			running = false;

@@ -13,12 +13,26 @@ namespace Vita8
 		
 		private System.Timers.Timer timer = new System.Timers.Timer(1000); 
 		private int fps = 0;
+		private int realfps = 0;
+		
+		private SpriteUV sprite;
+		private Texture2D texture;
 		
 		public EmulatorScene(Emulator emulator)
 		{
+			this.sprite = new SpriteUV();
+			this.texture = new Texture2D(64*10, 32*10, false, PixelFormat.Rgba);
+			TextureInfo texture_info = new TextureInfo(texture);
+			sprite.TextureInfo = texture_info;		
+			sprite.Quad.S = texture_info.TextureSizef; 
+			//sprite.CenterSprite();
+			sprite.Position = new Vector2(0.5f, 0.5f);//this.Camera.CalcBounds().Center;
+			this.AddChild( sprite );
+			
 			this.timer.Elapsed += delegate {
-				Console.WriteLine("fps: " + fps);
+				Console.WriteLine("fps: " + fps + "/" + realfps);
 				fps = 0;
+				realfps = 0;
 			};
 			this.timer.Enabled = true;
 			
@@ -44,28 +58,10 @@ namespace Vita8
 		
 		public override void Draw()
 		{
-			Texture2D texture = emulator.Render();
-			if (texture != null)
+			realfps++;
+			if (emulator.Render(texture))
 			{
 				fps++;
-				var texture_info = new TextureInfo(texture);
-				
-				// create a new sprite
-				var sprite = new SpriteUV() { TextureInfo = texture_info};
-		
-				// make the texture 1:1 on screen
-				sprite.Quad.S = texture_info.TextureSizef; 
-		
-				// center the sprite around its own .Position 
-				// (by default .Position is the lower left bit of the sprite)
-				sprite.CenterSprite();
-		
-				// put the sprite at the center of the screen
-				sprite.Position = this.Camera.CalcBounds().Center;
-		
-				// our scene only has 2 nodes: scene->sprite
-				this.AddChild( sprite );
-	
 				base.Draw();
 			}
 		}

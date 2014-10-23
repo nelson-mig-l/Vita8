@@ -1,17 +1,20 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\AppMain.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\EmulatorScene.cs">
     <Files>
-      <File FileName="Vita8\AppMain.cs" Line="125" Column="15" />
-      <File FileName="Vita8\roms\vbrix.xml" Line="13" Column="35" />
+      <File FileName="Vita8\EmulatorScene.cs" Line="34" Column="3" />
+      <File FileName="Vita8\Emulator.cs" Line="59" Column="42" />
+      <File FileName="Chip8\Chip8.cs" Line="112" Column="17" />
+      <File FileName="Chip8\Display.cs" Line="6" Column="15" />
+      <File FileName="Vita8\Screen.cs" Line="53" Column="31" />
+      <File FileName="Vita8\AppMain.cs" Line="56" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Chip8" expanded="True" />
           <Node name="Vita8" expanded="True">
-            <Node name="roms" expanded="True" />
-            <Node name="AppMain.cs" selected="True" />
+            <Node name="EmulatorScene.cs" selected="True" />
           </Node>
         </State>
       </Pad>
