@@ -18,11 +18,13 @@ namespace Vita8
 		
 		private static Emulator emulator;
 		
+		private static System.Timers.Timer timer = new System.Timers.Timer(1000);
+		
 		public static void Main(string[] args)
 		{
 			Initialize();
 			
-			emulator.Load("/Application/roms/tetris.rom");
+			emulator.Load("/Application/roms/vbrix.rom");
 			
 			emulator.Resume();
 			
@@ -33,11 +35,18 @@ namespace Vita8
 			}
 		}
 		
+		private static int fps = 0;
 		public static void Initialize()
 		{
 			// Set up the graphics system
 			graphics = new GraphicsContext();
 			Vita8Graphics.Initialize(graphics);
+			
+			timer.Elapsed += delegate {
+				Console.WriteLine("fps: " + fps);
+				fps = 0;
+			};
+			timer.Enabled = true;
 			
 			emulator = new Emulator();
 		}
@@ -50,7 +59,10 @@ namespace Vita8
 		
 		public static void Render ()
 		{
-			emulator.Render();
+			if (emulator.Render())
+			{
+				fps++;
+			}
 		}
 		
 		private static void UpdateKeys() {

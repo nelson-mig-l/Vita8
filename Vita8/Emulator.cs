@@ -54,12 +54,14 @@ namespace Vita8
 			}
 		}
 		
-		public void Render()
+		public bool Render()
 		{
 			speaker.Render(chip8);
 			if (chip8.Display.Modified) {
 				screen.Render(chip8.Display);
+				return true;
 			}
+			return false;
 		}
 		
 		public void Pause()
