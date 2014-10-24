@@ -66,9 +66,8 @@ namespace Vita8
 		public void Stop()
 		{
 			running = false;
-			if (thread != null && thread.IsAlive)
+			if (thread != null)
 			{
-				thread.Abort();
 				thread.Join();
 				thread = null;
 			}
@@ -83,9 +82,10 @@ namespace Vita8
 		}
 		
 		private void UpdateThread() {
-			while (true) {
+			while (running) {
 				this.Update();
 			}
+			Console.WriteLine("Update Thread Stoped");
 		}
 		
 		public void Reset()
@@ -95,7 +95,6 @@ namespace Vita8
 		
 		public void Dispose() 
 		{
-			Console.WriteLine("Dispose Emulator");
 			this.Stop();
 		}
 		

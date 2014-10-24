@@ -17,7 +17,8 @@ namespace Vita8
 {
 	public class AppMain
 	{
-		private static Emulator emulator;
+		// public?
+		public static Emulator emulator;
 		
 		public static void Main(string[] args)
 		{
@@ -38,20 +39,20 @@ namespace Vita8
 		
 		public static void Initialize()
 		{
+			emulator = new Emulator();
+
 			Director.Initialize();
-			//Director.Instance.RunWithScene(new Sce.PlayStation.HighLevel.GameEngine2D.Scene(), true);
+			Director.Instance.RunWithScene(new Sce.PlayStation.HighLevel.GameEngine2D.Scene(), true);
+			//scene.Camera.SetViewFromViewport();
 			
 			UISystem.Initialize(Director.Instance.GL.Context);
-			
-			emulator = new Emulator();
-			emulator.Load("/Application/roms/vbrix.rom");
-			EmulatorScene scene = new EmulatorScene(emulator);
-			//HomeScene scene = new HomeScene();
-			scene.Camera.SetViewFromViewport();
-			
-			Director.Instance.RunWithScene(scene, true);
-			
 			UISystem.SetScene(new HomeScene(Director.Instance));
+			
+			//emulator.Load("/Application/roms/vbrix.rom");
+			
+			//EmulatorScene scene = new EmulatorScene(emulator);
+			//HomeScene scene = new HomeScene();
+			
 		}
 
 	}

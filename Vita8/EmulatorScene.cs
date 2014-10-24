@@ -4,6 +4,7 @@ using Sce.PlayStation.HighLevel.GameEngine2D;
 using Sce.PlayStation.HighLevel.GameEngine2D.Base;
 using Sce.PlayStation.Core.Graphics;
 using Sce.PlayStation.Core.Imaging;
+using Sce.PlayStation.Core.Input;
 
 namespace Vita8
 {
@@ -25,6 +26,8 @@ namespace Vita8
 		
 		public EmulatorScene(Emulator emulator)
 		{
+			this.Camera.SetViewFromViewport();
+			
 			this.sprite = new SpriteUV();
 			this.texture = new Texture2D(64*10, 32*10, false, PixelFormat.Rgba);
 			TextureInfo texture_info = new TextureInfo(texture);
@@ -49,8 +52,6 @@ namespace Vita8
 
 			this.emulator.Start();
 			
-			this.emulator.Stop();
-			
 			RegisterDisposeOnExit(this.emulator);
 		}
 		
@@ -58,6 +59,12 @@ namespace Vita8
 		{
 			//emulator.Update();
 			//elapsedTime += dt;
+			if (IsPressed(GamePadButtons.Start)) {
+				AppMain.emulator.Stop();
+				Sce.PlayStation.HighLevel.UI.UISystem.SetScene(new HomeScene(Director.Instance));
+				Director.Instance.ReplaceScene(new Sce.PlayStation.HighLevel.GameEngine2D.Scene());
+			}
+			
 			base.Update(dt);
 		}
 		
@@ -75,6 +82,15 @@ namespace Vita8
 		{
 			this.emulator.Stop();
 			base.OnExit();
+		}
+		
+		private static bool IsPressed(GamePadButtons button) 
+		{
+			var gamePadData = GamePad.GetData(0);
+			if((gamePadData.Buttons & button) == button) {
+				return true;
+			}
+			return false;
 		}
 	}
 }

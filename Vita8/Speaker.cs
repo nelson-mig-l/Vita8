@@ -18,20 +18,18 @@ namespace Vita8
 		public void Render(Chip8.Chip8 chip8)
 		{
 			bool beep = chip8.Beep;
-			bool status = soundPlayer.Status == SoundStatus.Playing;
-			// B S P
-			// 0 0 -
-			// 0 1 off
-			// 1 1 -
-			// 1 0 on
-			if ((beep ^ status) & beep)
-			{
-				soundPlayer.Play();
-			}
-			else
+			bool playing = soundPlayer.Status == SoundStatus.Playing;
+			
+			if (!beep && playing)
 			{
 				soundPlayer.Stop();
 			}
+			
+			if (beep && !playing) 
+			{
+				soundPlayer.Play();
+			}
+			
 		}
 	}
 }
