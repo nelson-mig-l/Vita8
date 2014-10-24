@@ -10,8 +10,6 @@ namespace Vita8
 {
 	public class EmulatorScene : Scene
 	{
-		private Emulator emulator;
-		
 		private System.Timers.Timer timer = new System.Timers.Timer(1000); 
 		private int fps = 0;
 		private int realfps = 0;
@@ -24,7 +22,7 @@ namespace Vita8
 			Position = new Vector2(5, 5)	
 		};
 		
-		public EmulatorScene(Emulator emulator)
+		public EmulatorScene()
 		{
 			this.Camera.SetViewFromViewport();
 			
@@ -45,33 +43,24 @@ namespace Vita8
 			};
 			this.timer.Enabled = true;
 			
-			this.emulator = emulator;
-			
 			this.AddChild(fpsLabel);
 			Scheduler.Instance.ScheduleUpdateForTarget(this, 1, false);
-
-			this.emulator.Start();
-			
-			RegisterDisposeOnExit(this.emulator);
 		}
 		
 		public override void Update(float dt)
 		{
-			//emulator.Update();
-			//elapsedTime += dt;
-			if (IsPressed(GamePadButtons.Start)) {
-				AppMain.emulator.Stop();
-				Sce.PlayStation.HighLevel.UI.UISystem.SetScene(new HomeScene(Director.Instance));
-				Director.Instance.ReplaceScene(new Sce.PlayStation.HighLevel.GameEngine2D.Scene());
-			}
-			
 			base.Update(dt);
 		}
 		
 		public override void Draw()
 		{
+			if (IsPressed(GamePadButtons.Triangle)) {
+				AppMain.emulator.Stop();
+				AppMain.sceneManager.SetScene(SceneManager.Vita8Scene.HOME);
+				Console.WriteLine("Moving into HOME scene");
+			}
 			realfps++;
-			if (emulator.Render(texture))
+			if (AppMain.emulator.Render(texture))
 			{
 				fps++;
 				base.Draw();
@@ -80,7 +69,8 @@ namespace Vita8
 		
 		public override void OnExit()
 		{
-			this.emulator.Stop();
+			AppMain.emulator.Stop();
+			Console.WriteLine("Stop emulator on exit");
 			base.OnExit();
 		}
 		

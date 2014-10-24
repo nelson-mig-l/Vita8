@@ -43,9 +43,10 @@
     <Compile Include="Emulator.cs" />
     <Compile Include="Speaker.cs" />
     <Compile Include="Screen.cs" />
-    <Compile Include="EmulatorScene.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="HomeScene.cs" />
+    <Compile Include="scenes\EmulatorScene.cs" />
+    <Compile Include="scenes\HomeSceneUI.cs" />
+    <Compile Include="scenes\SceneManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <PsmMetadata Include="app.xml" />
@@ -54,6 +55,7 @@
   <ItemGroup>
     <Folder Include="roms\" />
     <Folder Include="assets\" />
+    <Folder Include="scenes\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chip8\Chip8.csproj">

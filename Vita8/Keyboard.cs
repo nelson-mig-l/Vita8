@@ -9,15 +9,6 @@ namespace Vita8
 {
 	public class Keyboard
 	{
-		private class Btn
-		{
-			internal int id;
-			internal int xo;
-			internal int yo;
-			internal int xi;
-			internal int yi;
-		}
-		
 		private static int[,] IDS = {
 			{0x1, 0x2, 0x3, 0xC},
 			{0x4, 0x5, 0x6, 0xD},
@@ -25,12 +16,6 @@ namespace Vita8
 			{0xA, 0x0, 0xB, 0xF}
 		};
 		
-		private static int MARGIN = 2;
-		private int buttonSize;
-		private int x;
-		private int y;
-		private List<Btn> btns = new List<Btn>();
-
 		public Keyboard ()
 		{
 		}

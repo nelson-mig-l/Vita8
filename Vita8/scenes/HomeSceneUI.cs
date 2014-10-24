@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
 using Sce.PlayStation.HighLevel.UI;
+using Sce.PlayStation.HighLevel.GameEngine2D;
 
 namespace Vita8
 {
-	public class HomeScene : Scene
+	public class HomeSceneUI : Sce.PlayStation.HighLevel.UI.Scene
 	{
-		private List<Button> buttons = new List<Button>();
-		public HomeScene(Sce.PlayStation.HighLevel.GameEngine2D.Director director)
+		public HomeSceneUI()
 		{
 			Sce.PlayStation.HighLevel.UI.Panel dialog = new Panel();
-			dialog.Width = director.GL.Context.GetViewport().Width;
-			dialog.Height = director.GL.Context.GetViewport().Height;
+			dialog.Width = Director.Instance.GL.Context.GetViewport().Width;
+			dialog.Height = Director.Instance.GL.Context.GetViewport().Height;
 			Button buttonUI1 = new Button();
 			buttonUI1.Name = "buttonGoSlow";
 			buttonUI1.Text = "Tetris";
@@ -19,11 +19,9 @@ namespace Vita8
 			buttonUI1.Height = 50;
 			buttonUI1.Alpha = 0.8f;
 			buttonUI1.TouchEventReceived += (sender, e) => {
-				UISystem.SetScene(new Scene());
 				AppMain.emulator.Load("/Application/roms/tetris.rom");
-				director.ReplaceScene(new EmulatorScene(AppMain.emulator));
-				
-				//director.ReplaceScene(new SlowVersion());
+				AppMain.sceneManager.SetScene(SceneManager.Vita8Scene.EMULATOR);
+				AppMain.emulator.Start();
 			};
 			
 			Button buttonUI2 = new Button();
@@ -34,10 +32,9 @@ namespace Vita8
 			buttonUI2.SetPosition(0,55);
 			buttonUI2.Alpha = 0.8f;
 			buttonUI2.TouchEventReceived += (sender, e) => {
-				UISystem.SetScene(new Scene());
 				AppMain.emulator.Load("/Application/roms/vbrix.rom");
-				director.ReplaceScene(new EmulatorScene(AppMain.emulator));
-				//director.ReplaceScene(new FastVersion());
+				AppMain.sceneManager.SetScene(SceneManager.Vita8Scene.EMULATOR);
+				AppMain.emulator.Start();
 			};
 			
 			Button buttonUI3 = new Button();
@@ -48,10 +45,9 @@ namespace Vita8
 			buttonUI3.SetPosition(0,110);
 			buttonUI3.Alpha = 0.8f;
 			buttonUI3.TouchEventReceived += (sender, e) => {
-				UISystem.SetScene(new Scene());
 				AppMain.emulator.Load("/Application/roms/brix.rom");
-				director.ReplaceScene(new EmulatorScene(AppMain.emulator));
-				//quit = true;
+				AppMain.sceneManager.SetScene(SceneManager.Vita8Scene.EMULATOR);
+				AppMain.emulator.Start();
 			};
 			
 			dialog.AddChildLast(buttonUI1);

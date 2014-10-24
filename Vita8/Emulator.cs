@@ -82,6 +82,7 @@ namespace Vita8
 		}
 		
 		private void UpdateThread() {
+			Console.WriteLine("Update Thread Started");
 			while (running) {
 				this.Update();
 			}
