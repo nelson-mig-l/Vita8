@@ -1,17 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\EmulatorScene.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Vita8\Emulator.cs" Line="87" Column="4" />
-      <File FileName="Vita8\EmulatorScene.cs" Line="68" Column="1" />
-      <File FileName="Vita8\AppMain.cs" Line="20" Column="3" />
+      <File FileName="Vita8\AppMain.cs" Line="35" Column="37" />
+      <File FileName="Vita8\HomeScene.cs" Line="9" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Chip8" expanded="True" />
           <Node name="Vita8" expanded="True">
-            <Node name="EmulatorScene.cs" selected="True" />
+            <Node name="References" expanded="True" />
+            <Node name="AppMain.cs" selected="True" />
           </Node>
         </State>
       </Pad>

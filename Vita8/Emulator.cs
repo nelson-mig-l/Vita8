@@ -66,7 +66,7 @@ namespace Vita8
 		public void Stop()
 		{
 			running = false;
-			if (thread != null)
+			if (thread != null && thread.IsAlive)
 			{
 				thread.Abort();
 				thread.Join();
@@ -78,6 +78,7 @@ namespace Vita8
 		{
 			running = true;
 			thread = new Thread(new ThreadStart(this.UpdateThread));
+			thread.IsBackground = false;
 			thread.Start();
 		}
 		

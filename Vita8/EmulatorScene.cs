@@ -30,13 +30,13 @@ namespace Vita8
 			TextureInfo texture_info = new TextureInfo(texture);
 			sprite.TextureInfo = texture_info;		
 			sprite.Quad.S = texture_info.TextureSizef; 
-			//sprite.CenterSprite();
-			sprite.Position = new Vector2(112.0f, 112.0f);//this.Camera.CalcBounds().Center;
+			int width = Director.Instance.GL.Context.Screen.Width;
+			int height = Director.Instance.GL.Context.Screen.Height;
+			sprite.Position = new Vector2((width - texture.Width)/2, (height - texture.Height)/2);
 			this.AddChild( sprite );
 			
 			this.timer.Elapsed += delegate {
-				//Console.WriteLine("fps: " + fps + "/" + realfps);
-				fpsLabel.Text = "fps: " + fps + "/" + realfps;
+				fpsLabel.Text = "Frames per second: " + fps + "/" + realfps;
 				fps = 0;
 				realfps = 0;
 			};
@@ -48,6 +48,8 @@ namespace Vita8
 			Scheduler.Instance.ScheduleUpdateForTarget(this, 1, false);
 
 			this.emulator.Start();
+			
+			this.emulator.Stop();
 			
 			RegisterDisposeOnExit(this.emulator);
 		}

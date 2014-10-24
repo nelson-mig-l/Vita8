@@ -16,17 +16,6 @@ namespace Vita8
 			internal int yo;
 			internal int xi;
 			internal int yi;
-			
-			internal bool IsInside(TouchData touchData)
-		    {
-				int pixelX = Vita8Graphics.TouchPixelX(touchData);
-				int pixelY = Vita8Graphics.TouchPixelY(touchData);
-		        if (xo <= pixelX && xi >= pixelX && yo <= pixelY && yi >= pixelY) 
-				{
-		            return true;
-		        }
-		        return false;
-		    }
 		}
 		
 		private static int[,] IDS = {
