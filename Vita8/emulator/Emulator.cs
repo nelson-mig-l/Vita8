@@ -30,11 +30,19 @@ namespace Vita8
 			this.running = false;
 		}
 		
-		public void Load(string rom) 
+		public void LoadRom(string rom) 
 		{
 			Stop();
 			
 			chip8.LoadApplication(rom);
+		}
+		
+		public void Load(Configuration configuration)
+		{
+			string rom = "/Application/roms/" + configuration.rom.file;
+			Console.WriteLine("Will load " + rom);
+			LoadRom(rom);
+			keyboard.Configure(configuration);
 		}
 		
 		private void Update()

@@ -54,11 +54,12 @@ namespace Vita8
 		
 		public override void Draw()
 		{
-			if (IsPressed(GamePadButtons.Triangle)) {
+			if (IsPressed(GamePadButtons.Start)) {
 				AppMain.emulator.Stop();
 				AppMain.sceneManager.SetScene(SceneManager.Vita8Scene.HOME);
 				Console.WriteLine("Moving into HOME scene");
 			}
+			
 			realfps++;
 			if (AppMain.emulator.Render(texture))
 			{

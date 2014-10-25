@@ -39,14 +39,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppMain.cs" />
-    <Compile Include="Keyboard.cs" />
-    <Compile Include="Emulator.cs" />
-    <Compile Include="Speaker.cs" />
-    <Compile Include="Screen.cs" />
-    <Compile Include="Configuration.cs" />
     <Compile Include="scenes\EmulatorScene.cs" />
     <Compile Include="scenes\HomeSceneUI.cs" />
     <Compile Include="scenes\SceneManager.cs" />
+    <Compile Include="emulator\Emulator.cs" />
+    <Compile Include="emulator\Keyboard.cs" />
+    <Compile Include="emulator\Screen.cs" />
+    <Compile Include="emulator\Speaker.cs" />
+    <Compile Include="emulator\Configuration.cs" />
+    <Compile Include="emulator\IConfigurable.cs" />
   </ItemGroup>
   <ItemGroup>
     <PsmMetadata Include="app.xml" />
@@ -56,6 +57,7 @@
     <Folder Include="roms\" />
     <Folder Include="assets\" />
     <Folder Include="scenes\" />
+    <Folder Include="emulator\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chip8\Chip8.csproj">
@@ -64,38 +66,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="roms\15puzzle.rom" />
-    <None Include="roms\breakout.rom" />
-    <None Include="roms\hidden.rom" />
-    <None Include="roms\kaleid.rom" />
-    <None Include="roms\missile.rom" />
-    <None Include="roms\squash.rom" />
-    <None Include="roms\syzygy.rom" />
-    <None Include="roms\tictac.rom" />
-    <None Include="roms\wall.rom" />
-    <None Include="roms\tetris.xml" />
-    <None Include="roms\vbrix.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="roms\guess.rom" />
-    <Content Include="roms\pong.rom" />
     <Content Include="roms\tetris.rom" />
-    <Content Include="roms\pong2.rom" />
-    <Content Include="roms\tank.rom" />
-    <Content Include="roms\blitz.rom" />
-    <Content Include="roms\invaders.rom" />
-    <Content Include="roms\merlin.rom" />
-    <Content Include="roms\wipeoff.rom" />
-    <Content Include="roms\ufo.rom" />
-    <Content Include="roms\brix.rom" />
-    <Content Include="roms\vers.rom" />
-    <Content Include="roms\puzzle.rom" />
-    <Content Include="roms\connect4.rom" />
     <Content Include="assets\Square_1000Hz_-3dBFS_1s.wav" />
     <Content Include="assets\Square_500Hz_-10dBFS_1s.wav" />
-    <Content Include="roms\blinky.rom" />
-    <Content Include="roms\maze.rom" />
     <Content Include="roms\vbrix.rom" />
+    <Content Include="roms\tetris.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\vbrix.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\brix.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\brix.rom" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedShaderProgram Include="shaders\Simple.fcg" />

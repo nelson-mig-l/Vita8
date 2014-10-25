@@ -1,18 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<configuration>
-	
-	<rom name="V Brix" file="vbrix.rom" />
-	
-	<screen>
-		<pixel size="10" />
-		<background color="0xFF003333" />
-		<foreground color="0xFFFFFFFF" />
-	</screen>
-	
-	<keyboard>
-		<key button="Cross" value="7" />
-		<key button="Up" value="1" />
-		<key button="Down" value="4" />
-	</keyboard>
-	
-</configuration>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<rom>
+		<name>Vertical Brix</name>
+		<file>vbrix.rom</file>
+	</rom>	
+	<Keyboard>
+		<Keys>
+			<Key>
+				<Code>7</Code>
+				<Button>Cross</Button>
+			</Key>
+			<Key>
+				<Code>1</Code>
+				<Button>Up</Button>
+			</Key>
+			<Key>
+				<Code>4</Code>
+				<Button>Down</Button>
+			</Key>
+		</Keys>
+	</Keyboard>	
+</Configuration>

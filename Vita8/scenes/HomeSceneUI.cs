@@ -19,7 +19,8 @@ namespace Vita8
 			buttonUI1.Height = 50;
 			buttonUI1.Alpha = 0.8f;
 			buttonUI1.TouchEventReceived += (sender, e) => {
-				AppMain.emulator.Load("/Application/roms/tetris.rom");
+				Configuration configuration = Configuration.LoadFromXml("/Application/roms/tetris.xml");
+				AppMain.emulator.Load(configuration);
 				AppMain.sceneManager.SetScene(SceneManager.Vita8Scene.EMULATOR);
 				AppMain.emulator.Start();
 			};
@@ -32,7 +33,8 @@ namespace Vita8
 			buttonUI2.SetPosition(0,55);
 			buttonUI2.Alpha = 0.8f;
 			buttonUI2.TouchEventReceived += (sender, e) => {
-				AppMain.emulator.Load("/Application/roms/vbrix.rom");
+				Configuration configuration = Configuration.LoadFromXml("/Application/roms/vbrix.xml");
+				AppMain.emulator.Load(configuration);
 				AppMain.sceneManager.SetScene(SceneManager.Vita8Scene.EMULATOR);
 				AppMain.emulator.Start();
 			};
@@ -45,7 +47,8 @@ namespace Vita8
 			buttonUI3.SetPosition(0,110);
 			buttonUI3.Alpha = 0.8f;
 			buttonUI3.TouchEventReceived += (sender, e) => {
-				AppMain.emulator.Load("/Application/roms/brix.rom");
+				Configuration configuration = Configuration.LoadFromXml("/Application/roms/brix.xml");
+				AppMain.emulator.Load(configuration);
 				AppMain.sceneManager.SetScene(SceneManager.Vita8Scene.EMULATOR);
 				AppMain.emulator.Start();
 			};

@@ -8,7 +8,7 @@ using Sce.PlayStation.Core.Input;
 
 namespace Vita8
 {
-	public class Screen
+	public class Screen //: IConfigurable
 	{
 		private static uint COLOR_OFF = 0xFF660000;
 		private static uint COLOR_ON = 0xFFFF6600;

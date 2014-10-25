@@ -7,7 +7,7 @@ using Chip8;
 
 namespace Vita8
 {
-	public class Keyboard
+	public class Keyboard : IConfigurable
 	{
 		private static int[,] IDS = {
 			{0x1, 0x2, 0x3, 0xC},
@@ -16,16 +16,27 @@ namespace Vita8
 			{0xA, 0x0, 0xB, 0xF}
 		};
 		
-		public Keyboard ()
+		private Dictionary<GamePadButtons, int> keyMappings = new Dictionary<GamePadButtons, int>();
+		
+		public Keyboard()
 		{
 		}
 		
+		public void Configure(Configuration configuration) 
+		{
+			keyMappings.Clear();
+			foreach (Configuration.KeyboardConfiguration.Key key in configuration.Keyboard.Keys)
+			{
+				keyMappings.Add(key.Button, key.Code);
+			}
+		}
 		
 		public void Update(Chip8.Chip8 chip8)
 		{
-			chip8.Keypad.Set(0x7, IsPressed(GamePadButtons.Cross));
-			chip8.Keypad.Set(0x1, IsPressed(GamePadButtons.Up));
-			chip8.Keypad.Set(0x4, IsPressed(GamePadButtons.Down));
+			foreach(KeyValuePair<GamePadButtons, int> entry in keyMappings)
+			{
+				chip8.Keypad.Set(entry.Value, IsPressed(entry.Key));
+			}
 		}
 		
 		private static bool IsPressed(GamePadButtons button) 

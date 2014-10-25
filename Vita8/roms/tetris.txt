@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
 <Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<rom>
 		<name>Tetris</name>
 		<file>tetris.rom</file>
-	</rom>	
+	</rom>
 	<Keyboard>
 		<Keys>
 			<Key>
@@ -22,5 +23,9 @@
 				<Button>Down</Button>
 			</Key>
 		</Keys>
-	</Keyboard>	
-</Configuration>	
+	</Keyboard>
+	<Screen>
+		<background>0xFF00FFFF</background>
+		<foreground>0xFF0000FF</foreground>
+	</Screen>
+</Configuration>

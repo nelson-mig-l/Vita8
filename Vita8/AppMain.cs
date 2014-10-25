@@ -24,6 +24,10 @@ namespace Vita8
 		
 		public static void Main(string[] args)
 		{
+			Configuration configuration = new Configuration();
+			configuration.Example();
+			Configuration.SaveToXml(configuration, "");
+			
 			Initialize();
 			
 			while (true) {
