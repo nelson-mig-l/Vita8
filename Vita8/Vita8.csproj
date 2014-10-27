@@ -96,6 +96,18 @@
     <Content Include="roms\tank.xml">
       <PSM-Content-Protection>Plain</PSM-Content-Protection>
     </Content>
+    <Content Include="roms\blinky.rom" />
+    <Content Include="roms\blinky.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\breakout.rom" />
+    <Content Include="roms\breakout.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\pong.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\pong.rom" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedShaderProgram Include="shaders\Simple.fcg" />

@@ -1,0 +1,34 @@
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<rom>
+		<name>Blinky</name>
+		<file>blinky.rom</file>
+	</rom>	
+	<Keyboard>
+		<Keys>
+			<Key>
+				<Code>1</Code>
+				<Button>Down</Button>
+			</Key>
+			<Key>
+				<Code>3</Code>
+				<Button>Up</Button>
+			</Key>
+			<Key>
+				<Code>6</Code>
+				<Button>Cross</Button>
+			</Key>
+			<Key>
+				<Code>7</Code>
+				<Button>Left</Button>
+			</Key>
+			<Key>
+				<Code>8</Code>
+				<Button>Right</Button>
+			</Key>
+			<Key>
+				<Code>15</Code>
+				<Button>Circle</Button>
+			</Key>
+		</Keys>
+	</Keyboard>	
+</Configuration>

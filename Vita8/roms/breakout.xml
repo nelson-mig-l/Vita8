@@ -1,0 +1,18 @@
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<rom>
+		<name>Breakout</name>
+		<file>breakout.rom</file>
+	</rom>	
+	<Keyboard>
+		<Keys>
+			<Key>
+				<Code>4</Code>
+				<Button>Left</Button>
+			</Key>
+			<Key>
+				<Code>6</Code>
+				<Button>Right</Button>
+			</Key>
+		</Keys>
+	</Keyboard>	
+</Configuration>
