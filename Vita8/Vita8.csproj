@@ -23,7 +23,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -48,6 +48,10 @@
     <Compile Include="emulator\Speaker.cs" />
     <Compile Include="emulator\Configuration.cs" />
     <Compile Include="emulator\IConfigurable.cs" />
+    <Compile Include="scenes\GameListPanel.cs" />
+    <Compile Include="scenes\GameListPanelItem.cs" />
+    <Compile Include="scenes\WelcomeSceneUI.cs" />
+    <Compile Include="ConfigurationLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <PsmMetadata Include="app.xml" />
@@ -80,6 +84,18 @@
       <PSM-Content-Protection>Plain</PSM-Content-Protection>
     </Content>
     <Content Include="roms\brix.rom" />
+    <Content Include="roms\invaders.rom" />
+    <Content Include="roms\invaders.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\squash.rom" />
+    <Content Include="roms\squash.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\tank.rom" />
+    <Content Include="roms\tank.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedShaderProgram Include="shaders\Simple.fcg" />

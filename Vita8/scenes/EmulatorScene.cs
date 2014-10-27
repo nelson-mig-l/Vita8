@@ -54,7 +54,7 @@ namespace Vita8
 		
 		public override void Draw()
 		{
-			if (IsPressed(GamePadButtons.Start)) {
+			if (IsPressed(GamePadButtons.Select)) {
 				AppMain.emulator.Stop();
 				AppMain.sceneManager.SetScene(SceneManager.Vita8Scene.HOME);
 				Console.WriteLine("Moving into HOME scene");

@@ -1,0 +1,22 @@
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<rom>
+		<name>Squash</name>
+		<file>squash.rom</file>
+	</rom>	
+	<Keyboard>
+		<Keys>
+			<Key>
+				<Code>1</Code>
+				<Button>Up</Button>
+			</Key>
+			<Key>
+				<Code>4</Code>
+				<Button>Down</Button>
+			</Key>
+			<Key>
+				<Code>5</Code>
+				<Button>Cross</Button>
+			</Key>
+		</Keys>
+	</Keyboard>	
+</Configuration>

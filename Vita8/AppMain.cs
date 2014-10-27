@@ -17,8 +17,9 @@ namespace Vita8
 {
 	public class AppMain
 	{
-		// public?
+		// public used in scenes
 		public static Emulator emulator;
+		public static Configuration[] configurations;
 		
 		public static SceneManager sceneManager;
 		
@@ -52,10 +53,24 @@ namespace Vita8
 			Director.Instance.RunWithScene(new Sce.PlayStation.HighLevel.GameEngine2D.Scene(), true);
 			UISystem.SetScene(new Sce.PlayStation.HighLevel.UI.Scene());
 			
-			emulator = new Emulator();
 			sceneManager = new SceneManager();
 			
-			sceneManager.SetScene(SceneManager.Vita8Scene.HOME);
+			SceneManager.ScenePair welcome = new SceneManager.ScenePair(new WelcomeSceneUI(), new Sce.PlayStation.HighLevel.GameEngine2D.Scene());
+			sceneManager.RegisterScenePair(SceneManager.Vita8Scene.WELCOME, welcome);
+
+			ConfigurationLoader loader = new ConfigurationLoader();
+			configurations = loader.LoadConfigurations();
+			
+			SceneManager.ScenePair home  = new SceneManager.ScenePair(new HomeSceneUI(configurations), new Sce.PlayStation.HighLevel.GameEngine2D.Scene());
+			sceneManager.RegisterScenePair(SceneManager.Vita8Scene.HOME, home);
+			
+			AppMain.emulator = new Emulator();
+
+			SceneManager.ScenePair emulator  = new SceneManager.ScenePair(new Sce.PlayStation.HighLevel.UI.Scene(), new EmulatorScene());
+			sceneManager.RegisterScenePair(SceneManager.Vita8Scene.EMULATOR, emulator);
+			
+			sceneManager.SetScene(SceneManager.Vita8Scene.HOME);//WELCOME);
+			
 		}
 
 	}

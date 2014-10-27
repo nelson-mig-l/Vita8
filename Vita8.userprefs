@@ -1,17 +1,25 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\roms\tank.xml">
     <Files>
-      <File FileName="Vita8\AppMain.cs" Line="35" Column="37" />
-      <File FileName="Vita8\HomeScene.cs" Line="9" Column="17" />
+      <File FileName="Vita8\AppMain.cs" Line="58" Column="56" />
+      <File FileName="Vita8\scenes\SceneManager.cs" Line="21" Column="4" />
+      <File FileName="Vita8\scenes\GameListPanel.cs" Line="41" Column="39" />
+      <File FileName="Vita8\scenes\GameListPanelItem.cs" Line="12" Column="54" />
+      <File FileName="Vita8\scenes\HomeSceneUI.cs" Line="84" Column="36" />
+      <File FileName="Vita8\scenes\WelcomeSceneUI.cs" Line="11" Column="60" />
+      <File FileName="Vita8\roms\tank.xml" Line="18" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Chip8" expanded="True" />
           <Node name="Vita8" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="AppMain.cs" selected="True" />
+            <Node name="References" expanded="True">
+              <Node name="Sce.PlayStation.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=79439ffc308aa6a0" selected="True" />
+            </Node>
+            <Node name="roms" expanded="True" />
+            <Node name="scenes" expanded="True" />
           </Node>
         </State>
       </Pad>

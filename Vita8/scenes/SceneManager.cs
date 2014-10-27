@@ -11,17 +11,13 @@ namespace Vita8
 	{
 		public enum Vita8Scene
 		{
-			HOME, EMULATOR
+			WELCOME, HOME, EMULATOR
 		}
 		
-		private static Sce.PlayStation.HighLevel.UI.Scene EMPTY_UI_SCENE = new Sce.PlayStation.HighLevel.UI.Scene();
-		private static Sce.PlayStation.HighLevel.GameEngine2D.Scene EMPTY_SCENE = new Sce.PlayStation.HighLevel.GameEngine2D.Scene();
-		
-		private class ScenePair : Tuple<Sce.PlayStation.HighLevel.UI.Scene, Sce.PlayStation.HighLevel.GameEngine2D.Scene>
+		public class ScenePair : Tuple<Sce.PlayStation.HighLevel.UI.Scene, Sce.PlayStation.HighLevel.GameEngine2D.Scene>
 		{
 			public ScenePair(Sce.PlayStation.HighLevel.UI.Scene uiScene, Sce.PlayStation.HighLevel.GameEngine2D.Scene engineScene) : base(uiScene, engineScene)
 			{
-				
 			}
 		}
 		
@@ -29,11 +25,6 @@ namespace Vita8
 		
 		public SceneManager()
 		{
-			ScenePair home  = new ScenePair(new HomeSceneUI(), EMPTY_SCENE);
-			scenes.Add(Vita8Scene.HOME, home);
-			
-			ScenePair emulator  = new ScenePair(EMPTY_UI_SCENE, new EmulatorScene());
-			scenes.Add(Vita8Scene.EMULATOR, emulator);
 		}
 		
 		public void SetScene(Vita8Scene vita8scene)
@@ -41,6 +32,18 @@ namespace Vita8
 			ScenePair scene = scenes[vita8scene];
 			UISystem.SetScene(scene.Item1);
 			Director.Instance.ReplaceScene(scene.Item2);
+		}
+		
+		public void RegisterScenePair(Vita8Scene scene, ScenePair pair)
+		{
+			if (scenes.ContainsKey(scene))
+			{
+				throw new Exception("You can do that.");
+			}
+			else
+			{
+				scenes.Add(scene, pair);	
+			}
 		}
 	}
 }
