@@ -47,7 +47,6 @@
     <Compile Include="emulator\Screen.cs" />
     <Compile Include="emulator\Speaker.cs" />
     <Compile Include="emulator\Configuration.cs" />
-    <Compile Include="emulator\IConfigurable.cs" />
     <Compile Include="scenes\GameListPanel.cs" />
     <Compile Include="scenes\GameListPanelItem.cs" />
     <Compile Include="scenes\WelcomeSceneUI.cs" />

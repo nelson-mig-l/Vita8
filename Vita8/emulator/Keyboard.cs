@@ -7,7 +7,7 @@ using Chip8;
 
 namespace Vita8
 {
-	public class Keyboard : IConfigurable
+	public class Keyboard
 	{
 		private static int[,] IDS = {
 			{0x1, 0x2, 0x3, 0xC},

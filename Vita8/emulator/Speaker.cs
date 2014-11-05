@@ -3,7 +3,7 @@ using Sce.PlayStation.Core.Audio;
 
 namespace Vita8
 {
-	public class Speaker //: IConfigurable
+	public class Speaker 
 	{
 		private Sound sound;
         private SoundPlayer soundPlayer;

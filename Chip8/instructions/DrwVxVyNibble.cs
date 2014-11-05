@@ -18,7 +18,7 @@ namespace Chip8
 			int height = chip8.opcode & 0x000F;
 			ushort xx = chip8.v[x];
 			ushort yy = chip8.v[y];
-			
+
 			chip8.v[0xF] = 0; // no colision
 			for (int h = 0; h < height; h++)
 			{
@@ -27,8 +27,10 @@ namespace Chip8
 				{
 					int xw = xx + w;
 					int yh = yy + h;
-					if (xw > 63) continue;
-					if (yh > 31) continue;
+					// if (xw > 63) //Console.WriteLine("xw = " + xw);
+					xw = Sanitize(xw, 64);
+					// if (yh > 31) //Console.WriteLine("yh = " + yh);
+					yh = Sanitize(yh, 32);
 					
 					if((spriteLine & (0x80 >> w)) != 0)
 					{
@@ -54,6 +56,20 @@ namespace Chip8
 		public override string Assembler()
 		{
 			return ASSEMBLER;
+		}
+		
+		private int Sanitize(int v, int k)
+		{
+			while (v >= k)
+			{
+				v -= k;
+			}
+			while (v < 0)
+			{
+				v += k;
+			}
+			//Console.WriteLine("@" + v);
+			return v;
 		}
 	}
 }
