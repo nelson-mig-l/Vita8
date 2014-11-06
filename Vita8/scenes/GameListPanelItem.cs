@@ -17,17 +17,27 @@ namespace Vita8
 			button = new Button();
     	    button.X = 0;
     	    button.Y = 0;
-    	    button.Width = Width - 10;
+    	    button.Width = Height;//Width - 10;
     	    button.Height = Height;
     	    button.HorizontalAlignment = HorizontalAlignment.Center;
+			button.Text = "GO";
 			
-			button.TouchEventReceived += (sender, e) => {
+			label = new Label();
+			label.X = Height + 10;
+			label.Y = 0;
+			label.Width = Width - Height - 10;
+			label.Height = Height;
+			label.HorizontalAlignment = HorizontalAlignment.Left;
+			
+			
+			button.TouchEventReceived += (object sender, TouchEventArgs e) => {
 				AppMain.emulator.Load(configuration);
 				AppMain.sceneManager.SetScene(SceneManager.Vita8Scene.EMULATOR);
 				AppMain.emulator.Start();
 			};
 			
     	    this.AddChildLast(button);
+    	    this.AddChildLast(label);
     	}
 		
     	public Configuration Configuration
@@ -39,7 +49,7 @@ namespace Vita8
     	    set
     	    {
     	        configuration = value;
-				button.Text = configuration.rom.name;
+				label.Text = configuration.rom.name;
     	    }
     	}
 		
@@ -49,6 +59,7 @@ namespace Vita8
         }
 
     	private Sce.PlayStation.HighLevel.UI.Button button;
+    	private Sce.PlayStation.HighLevel.UI.Label label;
     }
 }
 

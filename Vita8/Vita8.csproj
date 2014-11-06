@@ -107,6 +107,10 @@
       <PSM-Content-Protection>Plain</PSM-Content-Protection>
     </Content>
     <Content Include="roms\pong.rom" />
+    <Content Include="roms\syzygy.rom" />
+    <Content Include="roms\syzygy.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedShaderProgram Include="shaders\Simple.fcg" />
