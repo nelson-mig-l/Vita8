@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Chip8
@@ -34,7 +35,7 @@ namespace Chip8
 		internal ushort stackPointer;
 		
 		internal byte[] v = new byte[16];
-		internal ushort[] stack = new ushort[16];
+		internal Stack<ushort> stack; // capacity = 16
 		internal byte[] memory = new byte[4096];
 		
 		internal byte delayTimer;
@@ -79,7 +80,6 @@ namespace Chip8
 			System.Console.WriteLine("0x" + programCounter.ToString("X4") + ": " + string.Format(instruction.Assembler(), na.ToString("X"), nb.ToString("X"), nc.ToString("X"), nd.ToString("X")));
 			
 			instruction.Execute(this);
-			
 		}
 				
 		public bool LoadApplication(string filename)
@@ -124,11 +124,7 @@ namespace Chip8
 			display.Reset();
 			keypad.Reset();
 			
-			for (int i = 0; i < 16; i++)
-			{
-				this.stack[i] = 0;
-			}
-			
+			this.stack = new Stack<ushort>(16);
 
 			for (int i = 0; i < 4096; i++)
 			{

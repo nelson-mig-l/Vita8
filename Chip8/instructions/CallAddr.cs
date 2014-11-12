@@ -12,8 +12,7 @@ namespace Chip8
 		
 		public override void Execute(Chip8 chip8)
 		{
-			chip8.stack[chip8.stackPointer] = chip8.programCounter;
-			chip8.stackPointer++;
+			chip8.stack.Push(chip8.programCounter);
 			int address = chip8.opcode & 0x0FFF;
 			chip8.programCounter = (ushort)address;
 		}

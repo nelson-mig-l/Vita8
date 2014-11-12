@@ -13,8 +13,7 @@ namespace Chip8
 		
 		public override void Execute(Chip8 chip8)
 		{
-			chip8.stackPointer--;
-			chip8.programCounter = chip8.stack[chip8.stackPointer];
+			chip8.programCounter = chip8.stack.Pop();
 			chip8.programCounter += 2;
 		}	
 		
