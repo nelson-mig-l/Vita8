@@ -111,6 +111,10 @@
     <Content Include="roms\syzygy.xml">
       <PSM-Content-Protection>Plain</PSM-Content-Protection>
     </Content>
+    <Content Include="roms\wipeoff.rom" />
+    <Content Include="roms\wipeoff.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedShaderProgram Include="shaders\Simple.fcg" />

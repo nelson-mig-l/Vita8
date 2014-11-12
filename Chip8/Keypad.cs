@@ -29,7 +29,7 @@ namespace Chip8
 		
 		internal byte Get(int code)
 		{
-			//Console.WriteLine("Reading key " + code.ToString("X"));
+			Console.WriteLine("Reading key " + code.ToString("X"));
 			return state[code];
 		}
 	}
