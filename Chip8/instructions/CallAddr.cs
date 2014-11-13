@@ -16,11 +16,6 @@ namespace Chip8
 			int address = chip8.opcode & 0x0FFF;
 			chip8.programCounter = (ushort)address;
 		}
-		
-		public override string Assembler()
-		{
-			return ASSEMBLER;
-		}
 	}
 }
 

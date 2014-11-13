@@ -53,11 +53,6 @@ namespace Chip8
 			chip8.programCounter += 2;			
 		}
 		
-		public override string Assembler()
-		{
-			return ASSEMBLER;
-		}
-		
 		private int Sanitize(int v, int k)
 		{
 			while (v >= k)

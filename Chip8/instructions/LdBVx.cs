@@ -18,11 +18,6 @@ namespace Chip8
 			chip8.memory[chip8.indexRegister+ 2] = (byte)((chip8.v[x] % 100) % 10);					
 			chip8.programCounter += 2;			
 		}
-		
-		public override string Assembler()
-		{
-			return ASSEMBLER;
-		}
 	}
 }
 

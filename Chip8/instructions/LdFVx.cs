@@ -16,11 +16,6 @@ namespace Chip8
 			int offset = chip8.v[x] * 0x5;
 			chip8.indexRegister = (ushort)offset;
 			chip8.programCounter += 2;			
-		}		
-		
-		public override string Assembler()
-		{
-			return ASSEMBLER;
 		}
 	}
 }

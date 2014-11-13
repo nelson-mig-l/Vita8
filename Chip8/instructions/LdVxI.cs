@@ -21,11 +21,6 @@ namespace Chip8
 			chip8.indexRegister += (ushort)(x + 1);
 			chip8.programCounter += 2;			
 		}
-		
-		public override string Assembler()
-		{
-			return ASSEMBLER;
-		}
 	}
 }
 
