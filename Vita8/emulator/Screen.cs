@@ -8,43 +8,46 @@ using Sce.PlayStation.Core.Input;
 
 namespace Vita8
 {
-	public class Screen //: IConfigurable
+	public class Screen
 	{
-		private static uint COLOR_OFF = 0xFF660000;
-		private static uint COLOR_ON = 0xFFFF6600;
+		private uint COLOR_OFF = 0xFF660000;
+		private uint COLOR_ON = 0xFFFF6600;
 		
 		private int pixelSize;
 		private int width;
 		private int height;
-		//private Texture2D texture;
 		
-		private uint[] pon = {
-			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
-			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
-			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
-			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
-			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
+		private bool[] pixelOnPattern = {
+			true, true, true, true, true, true, true, true, true, true,
+			true, true, true, true, true, true, true, true, true, true,
+			true, true, true, true, true, true, true, true, true, true,
+			true, true, true, true, true, true, true, true, true, true,
+			true, true, true, true, true, true, true, true, true, true,
 			
-			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
-			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
-			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
-			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
-			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON
+			true, true, true, true, true, true, true, true, true, true,
+			true, true, true, true, true, true, true, true, true, true,
+			true, true, true, true, true, true, true, true, true, true,
+			true, true, true, true, true, true, true, true, true, true,
+			true, true, true, true, true, true, true, true, true, true
 		};
 		
-		private uint[] pof = {
-			COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,COLOR_ON,
-			COLOR_ON,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
-			COLOR_ON,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
-			COLOR_ON,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
-			COLOR_ON,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+		private bool[] pixelOffPattern = {
+			true, true, true, true, true, true, true, true, true, true,
+			true, false, false, false, false, false, false, false, false, false,
+			true, false, false, false, false, false, false, false, false, false,
+			true, false, false, false, false, false, false, false, false, false,
+			true, false, false, false, false, false, false, false, false, false,
 			
-			COLOR_ON,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
-			COLOR_ON,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
-			COLOR_ON,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
-			COLOR_ON,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
-			COLOR_ON,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,COLOR_OFF,
+			true, false, false, false, false, false, false, false, false, false,
+			true, false, false, false, false, false, false, false, false, false,
+			true, false, false, false, false, false, false, false, false, false,
+			true, false, false, false, false, false, false, false, false, false,
+			true, false, false, false, false, false, false, false, false, false
 		};
+		
+		private uint[] pon = new uint[10*10];
+	
+		private uint[] pof = new uint[10*10];
 		
 		public Screen(int width, int height, int pixelSize)
 		{
@@ -53,10 +56,35 @@ namespace Vita8
 			this.pixelSize = pixelSize;
 		}
 		
+		public void Configure(Configuration configuration) 
+		{
+			COLOR_ON = configuration.Screen.on;
+			COLOR_OFF = configuration.Screen.off;
+			
+			for(int index = 0; index < 100; index++)
+			{
+				if (pixelOnPattern[index])
+				{
+					pon[index] = COLOR_ON;
+				}
+				else
+				{
+					pon[index] = COLOR_OFF;
+				}
+				if (pixelOffPattern[index])
+				{
+					pof[index] = COLOR_ON;
+				}
+				else
+				{
+					pof[index] = COLOR_OFF;
+				}
+			}
+		}
+		
 		public void Render(Chip8.Display display, Texture2D texture) 
 		{
 			byte[,] gfx = display.GetAll();
-			uint[] pixels = new uint[gfx.Length*pixelSize];
 			
 			int index = 0;
 			for (int row = 0; row < height; row++)
@@ -65,12 +93,10 @@ namespace Vita8
 				{
 					if (gfx[col, row] == 0)
 					{
-						pixels[index] = COLOR_OFF;
 						texture.SetPixels(0, pof, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 					}
 					else
 					{
-						pixels[index] = COLOR_ON;
 						texture.SetPixels(0, pon, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 					}
 					index++;

@@ -30,7 +30,7 @@ namespace Vita8
 			this.running = false;
 		}
 		
-		public void LoadRom(string rom) 
+		private void LoadRom(string rom) 
 		{
 			Stop();
 			
@@ -41,8 +41,9 @@ namespace Vita8
 		{
 			string rom = "/Application/roms/" + configuration.rom.file;
 			Console.WriteLine("Will load " + rom);
-			LoadRom(rom);
 			keyboard.Configure(configuration);
+			screen.Configure(configuration);
+			LoadRom(rom);
 		}
 		
 		private void Update()
@@ -50,7 +51,6 @@ namespace Vita8
 			if (running)
 			{
 				keyboard.Update(chip8);
-					
 				speaker.Render(chip8);
 				
 				long current = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;

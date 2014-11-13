@@ -23,4 +23,8 @@
 			</Key>
 		</Keys>
 	</Keyboard>	
+	<Screen>
+		<on>4278190080</on>
+		<off>4288459429</off><!-- FF9C B2A5 -->
+	</Screen>
 </Configuration>	

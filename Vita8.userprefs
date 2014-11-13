@@ -1,27 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\emulator\Speaker.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\emulator\Screen.cs">
     <Files>
-      <File FileName="Chip8\instructions\DrwVxVyNibble.cs" Line="71" Column="6" />
-      <File FileName="Chip8\Display.cs" Line="40" Column="27" />
-      <File FileName="Chip8\Chip8.cs" Line="72" Column="4" />
-      <File FileName="Vita8\scenes\EmulatorScene.cs" Line="1" Column="1" />
-      <File FileName="Vita8\scenes\GameListPanel.cs" Line="23" Column="3" />
-      <File FileName="Vita8\scenes\GameListPanelItem.cs" Line="10" Column="1" />
-      <File FileName="Vita8\scenes\HomeSceneUI.cs" Line="1" Column="1" />
-      <File FileName="Vita8\scenes\SceneManager.cs" Line="1" Column="1" />
-      <File FileName="Vita8\AppMain.cs" Line="15" Column="1" />
-      <File FileName="Vita8\ConfigurationLoader.cs" Line="1" Column="1" />
-      <File FileName="Vita8\emulator\Configuration.cs" Line="1" Column="1" />
-      <File FileName="Vita8\emulator\Emulator.cs" Line="1" Column="1" />
-      <File FileName="Vita8\emulator\IConfigurable.cs" Line="1" Column="1" />
-      <File FileName="Vita8\emulator\Keyboard.cs" Line="10" Column="23" />
-      <File FileName="Vita8\emulator\Screen.cs" Line="1" Column="1" />
-      <File FileName="Vita8\emulator\Speaker.cs" Line="14" Column="48" />
+      <File FileName="Vita8\emulator\Emulator.cs" Line="45" Column="20" />
+      <File FileName="Vita8\emulator\Screen.cs" Line="62" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" />
+        <State expanded="True">
+          <Node name="Chip8" expanded="True" />
+          <Node name="Vita8" expanded="True">
+            <Node name="emulator" expanded="True">
+              <Node name="Screen.cs" selected="True" />
+            </Node>
+            <Node name="roms" expanded="True" />
+            <Node name="scenes" expanded="True" />
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True">
