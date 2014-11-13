@@ -1,20 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Chip8\Keypad.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Chip8\instructions\Instruction_FX65_LdVxI.cs">
     <Files>
-      <File FileName="Chip8\InstructionSet.cs" Line="76" Column="49" />
-      <File FileName="Chip8\Keypad.cs" Line="1" Column="1" />
+      <File FileName="Chip8\instructions\Instruction_FX55_LdIVx.cs" Line="5" Column="37" />
+      <File FileName="Chip8\instructions\Instruction_FX65_LdVxI.cs" Line="12" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Chip8" expanded="True">
-            <Node name="instructions" expanded="True" />
-            <Node name="Keypad.cs" selected="True" />
-          </Node>
-          <Node name="Vita8" expanded="True">
-            <Node name="emulator" expanded="True" />
-          </Node>
+          <Node name="Solution Items" selected="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
