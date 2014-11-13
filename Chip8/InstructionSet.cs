@@ -8,6 +8,8 @@ namespace Chip8
 	
 	// http://devernay.free.fr/hacks/chip8/chip8.html
 	
+	// http://mattmik.com/chip8.html
+	
 	public class InstructionSet
 	{
 		private static Instruction CLS = new Cls();

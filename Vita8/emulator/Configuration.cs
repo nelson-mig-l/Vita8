@@ -76,7 +76,6 @@ namespace Vita8
 		// http://msdn.microsoft.com/en-us/library/tz8csy73(v=vs.110).aspx
 		public static Configuration LoadFromXml(string filename) {
 			XmlSerializer serializer = new XmlSerializer(typeof(Configuration));
-			//FileStream fs = new FileStream(filename, FileMode.Open);
 			FileStream fs = File.OpenRead(filename);
         	XmlReader reader = XmlReader.Create(fs);
 			return (Configuration)serializer.Deserialize(reader);
