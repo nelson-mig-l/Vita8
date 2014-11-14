@@ -3,12 +3,12 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Chip8\instructions\Instruction_FX65_LdVxI.cs">
     <Files>
       <File FileName="Chip8\instructions\Instruction_FX55_LdIVx.cs" Line="5" Column="37" />
-      <File FileName="Chip8\instructions\Instruction_FX65_LdVxI.cs" Line="12" Column="3" />
+      <File FileName="Chip8\instructions\Instruction_FX65_LdVxI.cs" Line="14" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Solution Items" selected="True" />
+          <Node name="Documentation" selected="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

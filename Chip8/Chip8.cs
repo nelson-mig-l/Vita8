@@ -32,7 +32,6 @@ namespace Chip8
 		internal ushort programCounter;
 		internal ushort opcode;
 		internal ushort indexRegister;
-		internal ushort stackPointer;
 		
 		internal byte[] v = new byte[16];
 		internal Stack<ushort> stack; // capacity = 16
@@ -119,7 +118,6 @@ namespace Chip8
 			this.programCounter = 0x200;
 			this.opcode = 0;
 			this.indexRegister = 0;
-			this.stackPointer = 0;
 
 			display.Reset();
 			keypad.Reset();
