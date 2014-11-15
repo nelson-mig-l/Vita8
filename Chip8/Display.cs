@@ -34,6 +34,13 @@ namespace Chip8
 		{
 			Clear();
 		}
+		
+		internal void Set(int index, byte v)
+		{
+			int col = index % width;
+			int row = (index - col) / width;
+			Set(col, row, v);
+		}
 
 		internal void Set(int col, int row, byte v)
 		{

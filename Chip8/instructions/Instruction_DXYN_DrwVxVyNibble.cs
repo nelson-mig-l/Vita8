@@ -15,56 +15,46 @@ namespace Chip8
 		{
 			int x = (chip8.opcode & 0x0F00) >> 8;
 			int y = (chip8.opcode & 0x00F0) >> 4;
+			int coordx = chip8.v[x];
+			int coordy = chip8.v[y];
 			int height = chip8.opcode & 0x000F;
-			ushort xx = chip8.v[x];
-			ushort yy = chip8.v[y];
 
 			chip8.v[0xF] = 0; // no colision
-			for (int h = 0; h < height; h++)
+			
+			for (int yline = 0; yline < height; yline++)
 			{
-				byte spriteLine = chip8.memory[chip8.indexRegister + h];
-				for(int w = 0; w < 8; w++)
+				byte data = chip8.memory[chip8.indexRegister + yline];
+				
+				int xpixelinv = 0x7;
+				for(int xpixel = 0; xpixel < 8; xpixel++, xpixelinv--)
 				{
-					int xw = xx + w;
-					int yh = yy + h;
-					// if (xw > 63) //Console.WriteLine("xw = " + xw);
-					xw = Sanitize(xw, 64);
-					// if (yh > 31) //Console.WriteLine("yh = " + yh);
-					yh = Sanitize(yh, 32);
+					int mask = 1 << xpixelinv;
 					
-					if((spriteLine & (0x80 >> w)) != 0)
+					int xx = coordx + xpixel;
+					int yy = coordy + yline;
+					
+					//start fix
+					xx = xx % chip8.Display.Width;
+					yy = yy % chip8.Display.Height;
+					//end fix
+					
+					if ((data & mask) != 0)
 					{
-						byte state = chip8.Display.Get(xw, yh);
-						if (state == 1)
+						byte state = chip8.Display.Get(xx, yy);
+						if (state != 0)
 						{
-							chip8.v[0xF] = 1; // colision  
-							//Console.WriteLine("collision@" + xw + "," + yh);
-							chip8.Display.Set(xw, yh , 0);
-						} else {
-						chip8.Display.Set(xw, yh , 1);//(byte)(state ^ 1));
+							chip8.v[0xF] = 1;
 						}
-					} 
-					else 
+						state ^=1;
+						chip8.Display.Set(xx, yy, state);
+					}
+					else
 					{
-						//chip8.Display.Set(xw, yh , 0);
+						//chip8.Display.Set(xx, yy, 0);
 					}
 				}
 			}
 			chip8.programCounter += 2;			
-		}
-		
-		private int Sanitize(int v, int k)
-		{
-			while (v >= k)
-			{
-				v -= k;
-			}
-			while (v < 0)
-			{
-				v += k;
-			}
-			//Console.WriteLine("@" + v);
-			return v;
 		}
 	}
 }
