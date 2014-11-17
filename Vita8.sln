@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		Documentation\CHIP8.pdf = Documentation\CHIP8.pdf
 		Documentation\manual.pdf = Documentation\manual.pdf
 		Documentation\Mastering CHIP-8.pdf = Documentation\Mastering CHIP-8.pdf
+		Documentation\Chip-8 on the COSMAC VIP - Drawing Sprites - Laurence Scotford.pdf = Documentation\Chip-8 on the COSMAC VIP - Drawing Sprites - Laurence Scotford.pdf
+		Documentation\ELF CHIP-8 Interpreter.pdf = Documentation\ELF CHIP-8 Interpreter.pdf
 	EndProjectSection
 EndProject
 Global

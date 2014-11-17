@@ -18,6 +18,10 @@ namespace Chip8
 			int coordx = chip8.v[x];
 			int coordy = chip8.v[y];
 			int height = chip8.opcode & 0x000F;
+			
+			coordx = coordx % chip8.Display.Width;
+			coordy = coordy % chip8.Display.Height;
+
 
 			chip8.v[0xF] = 0; // no colision
 			
@@ -34,9 +38,10 @@ namespace Chip8
 					int yy = coordy + yline;
 					
 					//start fix
-					xx = xx % chip8.Display.Width;
-					yy = yy % chip8.Display.Height;
+					//xx = xx % chip8.Display.Width;
+					//yy = yy % chip8.Display.Height;
 					//end fix
+					if ((xx >= 64) || (yy >= 32)) continue;
 					
 					if ((data & mask) != 0)
 					{
@@ -47,10 +52,6 @@ namespace Chip8
 						}
 						state ^=1;
 						chip8.Display.Set(xx, yy, state);
-					}
-					else
-					{
-						//chip8.Display.Set(xx, yy, 0);
 					}
 				}
 			}

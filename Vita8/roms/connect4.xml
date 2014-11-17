@@ -1,7 +1,7 @@
 <Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<rom>
-		<name>Blitz</name>
-		<file>blitz.rom</file>
+		<name>Connect 4</name>
+		<file>connect4.rom</file>
 	</rom>	
 	<Keyboard>
 		<Keys>
@@ -9,6 +9,14 @@
 				<Code>5</Code>
 				<Button>Cross</Button>
 			</Key>
+			<Key>
+				<Code>6</Code>
+				<Button>Left</Button>
+			</Key>
+			<Key>
+				<Code>4</Code>
+				<Button>Right</Button>
+			</Key>			
 		</Keys>
 	</Keyboard>	
 </Configuration>

@@ -1,14 +1,27 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Chip8\instructions\Instruction_FX65_LdVxI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Chip8\instructions\Instruction_DXYN_DrwVxVyNibble.cs">
     <Files>
-      <File FileName="Chip8\instructions\Instruction_FX55_LdIVx.cs" Line="5" Column="37" />
-      <File FileName="Chip8\instructions\Instruction_FX65_LdVxI.cs" Line="14" Column="4" />
+      <File FileName="Chip8\Chip8.cs" Line="110" Column="3" />
+      <File FileName="Chip8\Keypad.cs" Line="18" Column="4" />
+      <File FileName="Vita8\ConfigurationLoader.cs" Line="18" Column="17" />
+      <File FileName="Vita8\emulator\Configuration.cs" Line="17" Column="4" />
+      <File FileName="Vita8\roms\blinky.xml" Line="20" Column="9" />
+      <File FileName="Chip8\instructions\Instruction_DXYN_DrwVxVyNibble.cs" Line="39" Column="15" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Documentation" selected="True" />
+          <Node name="Documentation" expanded="True" />
+          <Node name="Chip8" expanded="True">
+            <Node name="instructions" expanded="True">
+              <Node name="Instruction_DXYN_DrwVxVyNibble.cs" selected="True" />
+            </Node>
+          </Node>
+          <Node name="Vita8" expanded="True">
+            <Node name="emulator" expanded="True" />
+            <Node name="roms" expanded="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
