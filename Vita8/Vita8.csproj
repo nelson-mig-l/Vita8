@@ -123,6 +123,14 @@
     <Content Include="roms\connect4.xml">
       <PSM-Content-Protection>Plain</PSM-Content-Protection>
     </Content>
+    <Content Include="roms\wall.rom" />
+    <Content Include="roms\wall.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\ufo.rom" />
+    <Content Include="roms\ufo.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedShaderProgram Include="shaders\Simple.fcg" />

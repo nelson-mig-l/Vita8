@@ -3,6 +3,11 @@ using System;
 namespace Chip8
 {
 	//http://laurencescotford.co.uk/?p=304
+	
+	// http://omokute.blogspot.com/2012/06/emulation-basics-write-your-own-chip-8.html
+	
+	//http://code.google.com/p/pythonchip8/source/browse/chip8.py
+	
 	public class Instruction_DXYN_DrwVxVyNibble : Instruction
 	{
 		private static string CODE = "DXYN";
