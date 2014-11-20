@@ -57,7 +57,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="roms\" />
     <Folder Include="assets\" />
     <Folder Include="scenes\" />
     <Folder Include="emulator\" />
@@ -69,9 +68,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="roms\tetris.rom" />
     <Content Include="assets\Square_1000Hz_-3dBFS_1s.wav" />
     <Content Include="assets\Square_500Hz_-10dBFS_1s.wav" />
+    <Content Include="roms\tetris.rom" />
     <Content Include="roms\vbrix.rom" />
     <Content Include="roms\tetris.xml">
       <PSM-Content-Protection>Plain</PSM-Content-Protection>
@@ -129,6 +128,14 @@
     </Content>
     <Content Include="roms\ufo.rom" />
     <Content Include="roms\ufo.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\missile.rom" />
+    <Content Include="roms\missile.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\vers.rom" />
+    <Content Include="roms\vers.xml">
       <PSM-Content-Protection>Plain</PSM-Content-Protection>
     </Content>
   </ItemGroup>
