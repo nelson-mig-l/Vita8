@@ -16,7 +16,7 @@ namespace Chip8
 		
 		public void Reset()
 		{
-			for (int i = 0; i < 16; i++)
+			for (int i = 0; i < size; i++)
 			{
 				this.state[i] = 0;
 			}			

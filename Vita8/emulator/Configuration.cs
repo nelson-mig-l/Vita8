@@ -40,6 +40,11 @@ namespace Vita8
 			// fill default values
 			Screen.off = 0xFF660000;
 			Screen.on = 0xFFFF6600;
+			
+			// not all roms need to define keyboard. eg test roms
+			// so default is empty
+			Keyboard = new KeyboardConfiguration();
+			Keyboard.Keys = new List<KeyboardConfiguration.Key>();
 		}
 		
 		public void Example() 
