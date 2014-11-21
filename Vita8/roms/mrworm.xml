@@ -1,0 +1,23 @@
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<rom>
+		<name>Mr. Worm</name>
+		<file>mrworm.dat</file>
+	</rom>	
+	<Keyboard>
+		<Keys>
+			<Key>
+				<Code>0</Code>
+				<Button>Cross</Button>
+			</Key>
+			<Key>
+				<Code>7</Code>
+				<Button>Left</Button>
+			</Key>
+			<Key>
+				<Code>9</Code>
+				<Button>Right</Button>
+			</Key>
+		</Keys>
+	</Keyboard>	
+</Configuration>
+

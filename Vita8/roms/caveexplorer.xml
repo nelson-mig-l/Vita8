@@ -1,0 +1,31 @@
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<rom>
+		<name>Cave Explorer</name>
+		<file>caveexplorer.dat</file>
+	</rom>	
+	<Keyboard>
+		<Keys>
+			<Key>
+				<Code>0</Code>
+				<Button>Cross</Button>
+			</Key>
+			<Key>
+				<Code>5</Code>
+				<Button>Up</Button>
+			</Key>
+			<Key>
+				<Code>8</Code>
+				<Button>Down</Button>
+			</Key>
+			<Key>
+				<Code>7</Code>
+				<Button>Left</Button>
+			</Key>
+			<Key>
+				<Code>9</Code>
+				<Button>Right</Button>
+			</Key>
+		</Keys>
+	</Keyboard>	
+</Configuration>
+

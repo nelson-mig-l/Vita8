@@ -150,6 +150,18 @@
     <Content Include="roms\waitkey.xml">
       <PSM-Content-Protection>Plain</PSM-Content-Protection>
     </Content>
+    <Content Include="roms\chipwar.dat" />
+    <Content Include="roms\chipwar.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\mrworm.dat" />
+    <Content Include="roms\mrworm.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\caveexplorer.dat" />
+    <Content Include="roms\caveexplorer.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedShaderProgram Include="shaders\Simple.fcg" />

@@ -38,6 +38,13 @@ namespace Vita8
 			
 			this.timer.Elapsed += delegate {
 				fpsLabel.Text = "Frames per second: " + fps + "/" + realfps;
+				if (fps == realfps) {
+					fpsLabel.Color = new Vector4(1, 0, 0, 1); 
+				}
+				else
+				{
+					fpsLabel.Color = new Vector4(1, 1, 1, 1); 
+				}
 				fps = 0;
 				realfps = 0;
 			};

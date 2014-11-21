@@ -76,7 +76,7 @@ namespace Chip8
 			int nb = (opcode & 0x0F00) >> 8;
 			int nc = (opcode & 0x00F0) >> 4;
 			int nd = (opcode & 0x000F);
-			System.Console.WriteLine("0x" + programCounter.ToString("X4") + ": " + string.Format(instruction.Assembler(), na.ToString("X"), nb.ToString("X"), nc.ToString("X"), nd.ToString("X")));
+			//System.Console.WriteLine("0x" + programCounter.ToString("X4") + ": " + string.Format(instruction.Assembler(), na.ToString("X"), nb.ToString("X"), nc.ToString("X"), nd.ToString("X")));
 			
 			instruction.Execute(this);
 		}
