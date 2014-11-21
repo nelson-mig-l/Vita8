@@ -13,7 +13,7 @@ namespace Chip8
 		public override void Execute(Chip8 chip8)
 		{
 			int x = (chip8.opcode & 0x0F00) >> 8;
-			int offset = chip8.v[x] * 0x5;
+			int offset = chip8.v[x] * 5;
 			chip8.indexRegister = (ushort)offset;
 			chip8.programCounter += 2;			
 		}

@@ -75,6 +75,17 @@
     <Compile Include="instructions\Instruction_FX33_LdBVx.cs" />
     <Compile Include="instructions\Instruction_FX55_LdIVx.cs" />
     <Compile Include="instructions\Instruction_FX65_LdVxI.cs" />
+    <Compile Include="instructions\SuperInstruction_FX30_LdFVx.cs" />
+    <Compile Include="SuperInstructionSet.cs" />
+    <Compile Include="instructions\Instruction_Invalid.cs" />
+    <Compile Include="instructions\SuperInstruction_FX75_LdIVx.cs" />
+    <Compile Include="instructions\SuperInstruction_FX85_LdVxI.cs" />
+    <Compile Include="instructions\SuperInstruction_00CN_ScrollDownN.cs" />
+    <Compile Include="instructions\SuperInstruction_00FB_ScrollRight.cs" />
+    <Compile Include="instructions\SuperInstruction_00FC_ScrollLeft.cs" />
+    <Compile Include="instructions\SuperInstruction_00FD_Exit.cs" />
+    <Compile Include="instructions\SuperInstruction_00FE_ExtOff.cs" />
+    <Compile Include="instructions\SuperInstruction_00FF_ExtOn.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="instructions\" />

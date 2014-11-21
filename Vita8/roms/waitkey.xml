@@ -1,0 +1,51 @@
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<rom>
+		<name>Wait for key</name>
+		<file>waitkey.dat</file>
+	</rom>
+	<Keyboard>
+		<Keys>
+			<Key>
+				<Code>0</Code>
+				<Button>Cross</Button>
+			</Key>
+			<Key>
+				<Code>1</Code>
+				<Button>Circle</Button>
+			</Key>
+			<Key>
+				<Code>2</Code>
+				<Button>Triangle</Button>
+			</Key>
+			<Key>
+				<Code>3</Code>
+				<Button>Square</Button>
+			</Key>
+			<Key>
+				<Code>4</Code>
+				<Button>Up</Button>
+			</Key>
+			<Key>
+				<Code>5</Code>
+				<Button>Down</Button>
+			</Key>
+			<Key>
+				<Code>6</Code>
+				<Button>Left</Button>
+			</Key>
+			<Key>
+				<Code>7</Code>
+				<Button>Right</Button>
+			</Key>
+			<Key>
+				<Code>8</Code>
+				<Button>L</Button>
+			</Key>
+			<Key>
+				<Code>9</Code>
+				<Button>R</Button>
+			</Key>
+		</Keys>
+	</Keyboard>		
+</Configuration>	
+

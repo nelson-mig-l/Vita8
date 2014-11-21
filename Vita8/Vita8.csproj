@@ -146,6 +146,10 @@
     </Content>
     <Content Include="roms\testbranch.dat" />
     <Content Include="roms\testquirks.dat" />
+    <Content Include="roms\waitkey.dat" />
+    <Content Include="roms\waitkey.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedShaderProgram Include="shaders\Simple.fcg" />

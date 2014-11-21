@@ -12,6 +12,8 @@ namespace Chip8
 	
 	public class InstructionSet
 	{
+		private static Instruction INVALID = new Instruction_Invalid();
+		
 		private static Instruction CLS = new Instruction_00E0_Cls();
 		private static Instruction RET = new Instruction_00EE_Ret();
 		private static Instruction JP_ADDR = new Instruction_1NNN_JpAddr();
@@ -98,7 +100,7 @@ namespace Chip8
 			if ((opcode & MASK_X_XX) == 0xF055) return LD_I_VX;
 			if ((opcode & MASK_X_XX) == 0xF065) return LD_VX_I;
 			
-			throw new Exception("opcode not recognized" + opcode.ToString("X"));
+			return INVALID;
 		}
 	}
 }
