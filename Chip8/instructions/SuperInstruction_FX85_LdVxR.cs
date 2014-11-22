@@ -2,13 +2,13 @@ using System;
 
 namespace Chip8
 {
-	public class SuperInstruction_FX85_LdVxI : Instruction
+	public class SuperInstruction_FX85_LdVxR : Instruction
 	{
 		private static string CODE = "FX85";
-		private static string ASSEMBLER = "LD V{1}, [I]";
+		private static string ASSEMBLER = "LD V{1}, [R]";
 		private static string DESCRIPTION = "";
 
-		public SuperInstruction_FX85_LdVxI() : base(CODE, ASSEMBLER, DESCRIPTION) {}
+		public SuperInstruction_FX85_LdVxR() : base(CODE, ASSEMBLER, DESCRIPTION) {}
 		
 		public override void Execute(Chip8 chip8)
 		{

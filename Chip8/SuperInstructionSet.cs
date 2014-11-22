@@ -8,9 +8,9 @@ namespace Chip8
 	
 	public class SuperInstructionSet
 	{
-		private static Instruction LD_F_VX = new SuperInstruction_FX30_LdFVx();
-		private static Instruction LD_I_VX = new SuperInstruction_FX75_LdIVx();
-		private static Instruction LD_VX_I = new SuperInstruction_FX85_LdVxI();
+		private static Instruction LD_F_VX = new SuperInstruction_FX30_LdHfVx();
+		private static Instruction LD_I_VX = new SuperInstruction_FX75_LdRVx();
+		private static Instruction LD_VX_I = new SuperInstruction_FX85_LdVxR();
 		
 		private static ushort MASK_X_XX = 0xF0FF;
 		

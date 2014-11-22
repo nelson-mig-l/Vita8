@@ -24,7 +24,7 @@ namespace Vita8
 		
 		private ListPanelItem ListItemCreator()
         {
-            return new GameListPanelItem(this.Width, 60);
+            return new GameListPanelItem(this.Width, 70);
         }
 		
 		private void ListItemUpdator(ListPanelItem item)

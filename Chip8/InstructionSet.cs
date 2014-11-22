@@ -12,8 +12,10 @@ namespace Chip8
 	
 	public class InstructionSet
 	{
-		private static Instruction INVALID = new Instruction_Invalid();
+		// Should be set for some games
+		public static bool QuirkShift = true;
 		
+		private static Instruction INVALID = new Instruction_Invalid();
 		private static Instruction CLS = new Instruction_00E0_Cls();
 		private static Instruction RET = new Instruction_00EE_Ret();
 		private static Instruction JP_ADDR = new Instruction_1NNN_JpAddr();
@@ -29,9 +31,11 @@ namespace Chip8
 		private static Instruction XOR_VX_VY = new Instruction_8XY3_XorVxVy();
 		private static Instruction ADD_VX_VY = new Instruction_8XY4_AddVxVy();
 		private static Instruction SUB_VX_VY = new Instruction_8XY5_SubVxVy();
-		private static Instruction SHR_VX = new Instruction_8X06_ShrVx();
+		private static Instruction SHR_VX_VY = new Instruction_8XY6_ShrVxVy(); 
+		private static Instruction SHR_VX_QUIRK = new Instruction_8X06_ShrVx_Quirk();
 		private static Instruction SUBN_VX_VY = new Instruction_8XY7_SubnVxVy();
-		private static Instruction SHL_VX = new Instruction_8X0E_ShlVx();
+		private static Instruction SHL_VX_VY = new Instruction_8XYE_ShlVxVy();
+		private static Instruction SHL_VX_QUIRK = new Instruction_8X0E_ShlVx_Quirk();
 		private static Instruction SNE_VX_VY = new Instruction_9XY0_SneVxVy();
 		private static Instruction LD_I_ADDR = new Instruction_ANNN_LdIAddr();
 		private static Instruction JP_V0_ADDR = new Instruction_BNNN_JpV0Addr();
@@ -74,9 +78,27 @@ namespace Chip8
 			if ((opcode & MASK_X__X) == 0x8003) return XOR_VX_VY;
 			if ((opcode & MASK_X__X) == 0x8004) return ADD_VX_VY;
 			if ((opcode & MASK_X__X) == 0x8005) return SUB_VX_VY;
-			if ((opcode & MASK_X_XX) == 0x8006) return SHR_VX;
+			
+			if (QuirkShift)
+			{
+				if ((opcode & MASK_X_XX) == 0x8006) return SHR_VX_QUIRK;
+			}
+			else
+			{
+				if ((opcode & MASK_X__X) == 0x8006) return SHR_VX_VY;
+			}
+			
 			if ((opcode & MASK_X__X) == 0x8007) return SUBN_VX_VY;
-			if ((opcode & MASK_X_XX) == 0x800E) return SHL_VX;
+			
+			if (QuirkShift)
+			{
+				if ((opcode & MASK_X_XX) == 0x800E) return SHL_VX_QUIRK;
+			}
+			else
+			{
+				if ((opcode & MASK_X__X) == 0x800E) return SHL_VX_VY;
+			}
+			
 			
 			if ((opcode & MASK_X__X) == 0x9000) return SNE_VX_VY;
 			

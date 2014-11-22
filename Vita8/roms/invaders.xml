@@ -2,6 +2,7 @@
 	<rom>
 		<name>Space Invaders</name>
 		<file>invaders.rom</file>
+		<Description>Should use shift quirks</Description>
 	</rom>	
 	<Keyboard>
 		<Keys>

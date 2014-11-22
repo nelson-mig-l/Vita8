@@ -14,6 +14,7 @@ namespace Vita8
 		public struct Rom {
 			public string name;
 			public string file;
+			public string Description;
 		}
 
 		public struct ScreenConfiguration {

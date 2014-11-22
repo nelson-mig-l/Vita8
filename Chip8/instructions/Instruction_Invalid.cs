@@ -12,7 +12,7 @@ namespace Chip8
 		
 		public override void Execute(Chip8 chip8)
 		{
-			Console.WriteLine("opcode not recognized: " + chip8.opcode.ToString("X"));
+			Console.WriteLine("opcode not recognized: " + chip8.programCounter.ToString("X") + ":" + chip8.opcode.ToString("X"));
 			chip8.programCounter += 2;			
 		}
 

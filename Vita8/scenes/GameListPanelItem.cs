@@ -15,10 +15,10 @@ namespace Vita8
     	    this.Height = height;
     	    
 			button = new Button();
-    	    button.X = 0;
-    	    button.Y = 0;
-    	    button.Width = Height;//Width - 10;
-    	    button.Height = Height;
+    	    button.X = 5;
+    	    button.Y = 5;
+    	    button.Width = Height-10;
+    	    button.Height = Height-10;
     	    button.HorizontalAlignment = HorizontalAlignment.Center;
 			button.Text = "GO";
 			

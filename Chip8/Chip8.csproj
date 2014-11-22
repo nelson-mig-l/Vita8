@@ -37,7 +37,6 @@
   <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />
   <ItemGroup>
     <Compile Include="Chip8.cs" />
-    <Compile Include="InstructionSet.cs" />
     <Compile Include="instructions\Instruction.cs" />
     <Compile Include="Display.cs" />
     <Compile Include="Keypad.cs" />
@@ -50,12 +49,10 @@
     <Compile Include="instructions\Instruction_8XY2_AndVxVy.cs" />
     <Compile Include="instructions\Instruction_8XY1_OrVxVy.cs" />
     <Compile Include="instructions\Instruction_8XY3_XorVxVy.cs" />
-    <Compile Include="instructions\Instruction_8X06_ShrVx.cs" />
     <Compile Include="instructions\Instruction_CXNN_RndVxByte.cs" />
     <Compile Include="instructions\Instruction_1NNN_JpAddr.cs" />
     <Compile Include="instructions\Instruction_BNNN_JpV0Addr.cs" />
     <Compile Include="instructions\Instruction_2NNN_CallAddr.cs" />
-    <Compile Include="instructions\Instruction_8X0E_ShlVx.cs" />
     <Compile Include="instructions\Instruction_00EE_Ret.cs" />
     <Compile Include="instructions\Instruction_3XNN_SeVxByte.cs" />
     <Compile Include="instructions\Instruction_5XY0_SeVxVy.cs" />
@@ -75,17 +72,22 @@
     <Compile Include="instructions\Instruction_FX33_LdBVx.cs" />
     <Compile Include="instructions\Instruction_FX55_LdIVx.cs" />
     <Compile Include="instructions\Instruction_FX65_LdVxI.cs" />
-    <Compile Include="instructions\SuperInstruction_FX30_LdFVx.cs" />
     <Compile Include="SuperInstructionSet.cs" />
     <Compile Include="instructions\Instruction_Invalid.cs" />
-    <Compile Include="instructions\SuperInstruction_FX75_LdIVx.cs" />
-    <Compile Include="instructions\SuperInstruction_FX85_LdVxI.cs" />
-    <Compile Include="instructions\SuperInstruction_00CN_ScrollDownN.cs" />
-    <Compile Include="instructions\SuperInstruction_00FB_ScrollRight.cs" />
-    <Compile Include="instructions\SuperInstruction_00FC_ScrollLeft.cs" />
     <Compile Include="instructions\SuperInstruction_00FD_Exit.cs" />
-    <Compile Include="instructions\SuperInstruction_00FE_ExtOff.cs" />
-    <Compile Include="instructions\SuperInstruction_00FF_ExtOn.cs" />
+    <Compile Include="instructions\SuperInstruction_00CN_ScdN.cs" />
+    <Compile Include="instructions\SuperInstruction_00FB_Scr.cs" />
+    <Compile Include="instructions\SuperInstruction_00FC_Scl.cs" />
+    <Compile Include="instructions\SuperInstruction_00FE_Low.cs" />
+    <Compile Include="instructions\SuperInstruction_00FF_High.cs" />
+    <Compile Include="instructions\SuperInstruction_FX30_LdHfVx.cs" />
+    <Compile Include="instructions\SuperInstruction_FX75_LdRVx.cs" />
+    <Compile Include="instructions\SuperInstruction_FX85_LdVxR.cs" />
+    <Compile Include="instructions\Instruction_8X0E_ShlVx_Quirk.cs" />
+    <Compile Include="instructions\Instruction_8XYE_ShlVxVy.cs" />
+    <Compile Include="instructions\Instruction_8X06_ShrVx_Quirk.cs" />
+    <Compile Include="instructions\Instruction_8XY6_ShrVxVy.cs" />
+    <Compile Include="InstructionSet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="instructions\" />

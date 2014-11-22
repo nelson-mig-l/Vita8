@@ -2,13 +2,13 @@ using System;
 
 namespace Chip8
 {
-	public class Instruction_8X06_ShrVx : Instruction
+	public class Instruction_8X06_ShrVx_Quirk : Instruction
 	{
 		private static string CODE = "8X06"; // "8xy6"
 		private static string ASSEMBLER = "SHR V{1}"; // "SHR V{1}, V{2}"
 		private static string DESCRIPTION = "Store the value of register VY shifted right one bit in register VX. Set register VF to the least significant bit prior to the shift";
 		
-		public Instruction_8X06_ShrVx() : base(CODE, ASSEMBLER, DESCRIPTION)	{}
+		public Instruction_8X06_ShrVx_Quirk() : base(CODE, ASSEMBLER, DESCRIPTION)	{}
 		
 		public override void Execute(Chip8 chip8)
 		{
