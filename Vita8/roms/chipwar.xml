@@ -6,13 +6,34 @@
 	<Keyboard>
 		<Keys>
 			<Key>
-				<Code>4</Code>
+				<Code>7</Code>
 				<Button>Left</Button>
 			</Key>
 			<Key>
-				<Code>6</Code>
+				<Code>8</Code>
+				<Button>Down</Button>
+			</Key>
+			<Key>
+				<Code>5</Code>
+				<Button>Up</Button>
+			</Key>
+			<Key>
+				<Code>9</Code>
 				<Button>Right</Button>
+			</Key>
+			
+			<Key>
+				<Code>6</Code>
+				<Button>Cross</Button>
+			</Key>
+			<Key>
+				<Code>4</Code>
+				<Button>Circle</Button>
 			</Key>
 		</Keys>
 	</Keyboard>	
+	<Screen>
+		<on>4294967295</on>
+		<off>4278190080</off>
+	</Screen>
 </Configuration>

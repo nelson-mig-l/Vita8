@@ -13,7 +13,7 @@ namespace Chip8
 	public class InstructionSet
 	{
 		// Should be set for some games
-		public static bool QuirkShift = true;
+		public static bool QuirkShift = false;
 		
 		private static Instruction INVALID = new Instruction_Invalid();
 		private static Instruction CLS = new Instruction_00E0_Cls();
