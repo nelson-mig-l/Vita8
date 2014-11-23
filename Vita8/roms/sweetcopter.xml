@@ -1,0 +1,15 @@
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<rom>
+		<name>Sweetcopter</name>
+		<file>sweetcopter.dat</file>
+	</rom>
+	<Keyboard>
+		<Keys>
+			<Key>
+				<Code>6</Code>
+				<Button>Cross</Button>
+			</Key>
+		</Keys>
+	</Keyboard>
+</Configuration>	
+

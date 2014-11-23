@@ -178,6 +178,18 @@
     <Content Include="roms\testnext.xml">
       <PSM-Content-Protection>Plain</PSM-Content-Protection>
     </Content>
+    <Content Include="roms\gradsim.dat" />
+    <Content Include="roms\gradsim.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\outlaw.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
+    <Content Include="roms\outlaw.dat" />
+    <Content Include="roms\sweetcopter.dat" />
+    <Content Include="roms\sweetcopter.xml">
+      <PSM-Content-Protection>Plain</PSM-Content-Protection>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedShaderProgram Include="shaders\Simple.fcg" />
