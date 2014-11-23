@@ -45,9 +45,11 @@ namespace Vita8
 			true, false, false, false, false, false, false, false, false, false
 		};
 		
-		private uint[] pon = new uint[10*10];
-	
-		private uint[] pof = new uint[10*10];
+		private uint[] ponlo = new uint[10*10];
+		private uint[] poflo = new uint[10*10];
+		
+		private uint[] ponhi = new uint[5*5];
+		private uint[] pofhi = new uint[5*5];
 		
 		public Screen(int width, int height, int pixelSize)
 		{
@@ -61,29 +63,56 @@ namespace Vita8
 			COLOR_ON = configuration.Screen.on;
 			COLOR_OFF = configuration.Screen.off;
 			
-			for(int index = 0; index < 100; index++)
+			for(int index = 0; index < 10*10; index++)
 			{
 				if (pixelOnPattern[index])
 				{
-					pon[index] = COLOR_ON;
+					ponlo[index] = COLOR_ON;
 				}
 				else
 				{
-					pon[index] = COLOR_OFF;
+					ponlo[index] = COLOR_OFF;
 				}
 				if (pixelOffPattern[index])
 				{
-					pof[index] = COLOR_ON;
+					poflo[index] = COLOR_ON;
 				}
 				else
 				{
-					pof[index] = COLOR_OFF;
+					poflo[index] = COLOR_OFF;
 				}
 			}
+			
+			for(int index = 0; index < 5*5; index++)
+			{
+				if (pixelOnPattern[index])
+				{
+					ponhi[index] = COLOR_ON;
+				}
+				else
+				{
+					ponhi[index] = COLOR_OFF;
+				}
+				if (pixelOffPattern[index])
+				{
+					pofhi[index] = COLOR_ON;
+				}
+				else
+				{
+					pofhi[index] = COLOR_OFF;
+				}
+			}
+			
 		}
 		
 		public void Render(Chip8.Display display, Texture2D texture) 
 		{
+			if (display.Changed)
+			{
+				this.height = display.Height;
+				this.width = display.Width;
+			}
+			
 			byte[,] gfx = display.GetAll();
 			
 			int index = 0;
@@ -93,11 +122,25 @@ namespace Vita8
 				{
 					if (gfx[col, row] == 0)
 					{
-						texture.SetPixels(0, pof, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
+						if (display.Mode.Equals(Chip8.DisplayMode.LOWRES))
+						{
+							texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
+						} 
+						else
+						{
+							texture.SetPixels(0, pofhi, col*pixelSize/2, row*pixelSize/2, pixelSize/2, pixelSize/2);
+						}
 					}
 					else
 					{
-						texture.SetPixels(0, pon, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
+						if (display.Mode.Equals(Chip8.DisplayMode.LOWRES))
+						{
+							texture.SetPixels(0, ponlo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
+						}
+						else
+						{
+							texture.SetPixels(0, ponhi, col*pixelSize/2, row*pixelSize/2, pixelSize/2, pixelSize/2);
+						}
 					}
 					index++;
 				}

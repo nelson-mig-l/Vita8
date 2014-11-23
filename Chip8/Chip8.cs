@@ -61,7 +61,7 @@ namespace Chip8
 			
 			clock.Enabled = true;
 			
-			display = new Display(64, 32);
+			display = new Display();
 			keypad = new Keypad(16);
 			Reset();
 		}
@@ -70,7 +70,8 @@ namespace Chip8
 		{
 			this.opcode = (ushort)(this.memory[this.programCounter] << 8 | this.memory[this.programCounter + 1]);
 			
-			Instruction instruction = InstructionSet.GetInstruction(this.opcode);
+			//Instruction instruction = InstructionSet.GetInstruction(this.opcode);
+			Instruction instruction = SuperInstructionSet.GetInstruction(this.opcode);
 						
 			int na = (opcode & 0xF000) >> 12;
 			int nb = (opcode & 0x0F00) >> 8;

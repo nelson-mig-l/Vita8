@@ -46,7 +46,7 @@ namespace Chip8
 					//xx = xx % chip8.Display.Width;
 					//yy = yy % chip8.Display.Height;
 					//end fix
-					if ((xx >= 64) || (yy >= 32)) continue;
+					if ((xx >= chip8.Display.Width) || (yy >= chip8.Display.Height)) continue;
 					
 					if ((data & mask) != 0)
 					{
