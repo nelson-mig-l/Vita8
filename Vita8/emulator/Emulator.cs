@@ -25,7 +25,7 @@ namespace Vita8
 			this.chip8 = new Chip8.Chip8();
 			this.keyboard = new Keyboard();
 			this.speaker = new Speaker();
-			this.screen = new Screen(64, 32, 10);
+			this.screen = new Screen(10);
 			
 			this.running = false;
 		}

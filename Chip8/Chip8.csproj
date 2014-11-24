@@ -88,6 +88,7 @@
     <Compile Include="instructions\Instruction_8X06_ShrVx_Quirk.cs" />
     <Compile Include="instructions\Instruction_8XY6_ShrVxVy.cs" />
     <Compile Include="InstructionSet.cs" />
+    <Compile Include="DisplayResolution.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="instructions\" />

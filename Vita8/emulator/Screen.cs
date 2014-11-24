@@ -14,6 +14,8 @@ namespace Vita8
 		private uint COLOR_ON = 0xFFFF6600;
 		
 		private int pixelSize;
+		
+		private int lenght;
 		private int width;
 		private int height;
 		
@@ -51,11 +53,12 @@ namespace Vita8
 		private uint[] ponhi = new uint[5*5];
 		private uint[] pofhi = new uint[5*5];
 		
-		public Screen(int width, int height, int pixelSize)
+		public Screen(int pixelSizeOnLowRes)
 		{
-			this.width = width;
-			this.height = height;
-			this.pixelSize = pixelSize;
+			this.width = 0;
+			this.height = 0;
+			this.pixelSize = 10;
+			this.lenght = 0;
 		}
 		
 		public void Configure(Configuration configuration) 
@@ -102,26 +105,29 @@ namespace Vita8
 					pofhi[index] = COLOR_OFF;
 				}
 			}
-			
 		}
 		
 		public void Render(Chip8.Display display, Texture2D texture) 
 		{
-			if (display.Changed)
-			{
-				this.height = display.Height;
-				this.width = display.Width;
-			}
-			
 			byte[,] gfx = display.GetAll();
 			
-			Chip8.DisplayMode mode;
-			if (gfx.Length > 2048) {
-			mode = Chip8.DisplayMode.HIGHRES;
-			} else {
-			mode = Chip8.DisplayMode.LOWRES;
+			if 	(gfx.Length != this.lenght) {
+				this.lenght = gfx.Length;
+				
+				Chip8.DisplayMode mode;
+				if (gfx.Length > 2048) {
+					mode = Chip8.DisplayMode.HIGHRES;
+					Chip8.DisplayResolution.Resolution resolution = Chip8.DisplayResolution.SUPPORTED_RESOLUTIONS[mode];
+					width = resolution.Width;
+					height = resolution.Height;
+				} else {
+					mode = Chip8.DisplayMode.LOWRES;
+					Chip8.DisplayResolution.Resolution resolution = Chip8.DisplayResolution.SUPPORTED_RESOLUTIONS[mode];
+					width = resolution.Width;
+					height = resolution.Height;
+				}
 			}
-			
+
 			int index = 0;
 			for (int row = 0; row < height; row++)
 			{
@@ -129,7 +135,7 @@ namespace Vita8
 				{
 					if (gfx[col, row] == 0)
 					{
-						if (mode.Equals(Chip8.DisplayMode.LOWRES))
+						if (gfx.Length <= 2048)
 						{
 							texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 						} 
@@ -140,7 +146,7 @@ namespace Vita8
 					}
 					else
 					{
-						if (mode.Equals(Chip8.DisplayMode.LOWRES))
+						if (gfx.Length <= 2048)
 						{
 							texture.SetPixels(0, ponlo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 						}
