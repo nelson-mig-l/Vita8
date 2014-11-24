@@ -18,6 +18,7 @@ namespace Chip8
 			// static BYTE reg_v[16];
 			// #define OPV2 ((op & 0x0f00) >> 8)
 			// memcpy(host_flags, reg_v, OPV2 + 1);
+			throw new NotImplementedException();
 		}
 	}
 }

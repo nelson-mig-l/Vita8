@@ -8,9 +8,9 @@ namespace Chip8
 	
 	public class SuperInstructionSet
 	{
-		private static Instruction LD_F_VX = new SuperInstruction_FX30_LdHfVx();
-		private static Instruction LD_I_VX = new SuperInstruction_FX75_LdRVx();
-		private static Instruction LD_VX_I = new SuperInstruction_FX85_LdVxR();
+		private static Instruction LD_HF_VX = new SuperInstruction_FX30_LdHfVx();
+		private static Instruction LD_R_VX = new SuperInstruction_FX75_LdRVx();
+		private static Instruction LD_VX_R = new SuperInstruction_FX85_LdVxR();
 		private static Instruction HIGH = new SuperInstruction_00FF_High();
 		private static Instruction LOW = new SuperInstruction_00FE_Low();
 		
@@ -18,9 +18,9 @@ namespace Chip8
 		
 		public static Instruction GetInstruction(ushort opcode)
 		{
-			//if ((opcode & MASK_X_XX) == 0xF030) return LD_F_VX;	
-			//if ((opcode & MASK_X_XX) == 0xF075) return LD_I_VX;	
-			//if ((opcode & MASK_X_XX) == 0xF085) return LD_VX_I;	
+			if ((opcode & MASK_X_XX) == 0xF030) return LD_HF_VX;	
+			if ((opcode & MASK_X_XX) == 0xF075) return LD_R_VX;	
+			if ((opcode & MASK_X_XX) == 0xF085) return LD_VX_R;	
 			
 			if (opcode == 0x00FF) return HIGH;
 			if (opcode == 0x00FE) return LOW;

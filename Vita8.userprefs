@@ -1,20 +1,24 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\roms\testquirks.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Chip8\instructions\SuperInstruction_FX75_LdRVx.cs">
     <Files>
-      <File FileName="Vita8\roms\testbranch.xml" Line="4" Column="23" />
-      <File FileName="Vita8\roms\testquirks.xml" Line="8" Column="1" />
+      <File FileName="Chip8\SuperInstructionSet.cs" Line="23" Column="4" />
+      <File FileName="Chip8\instructions\SuperInstruction_FX30_LdHfVx.cs" Line="1" Column="1" />
+      <File FileName="Chip8\instructions\SuperInstruction_FX75_LdRVx.cs" Line="22" Column="1" />
+      <File FileName="Chip8\instructions\SuperInstruction_FX85_LdVxR.cs" Line="22" Column="1" />
+      <File FileName="Chip8\instructions\SuperInstruction_00FD_Exit.cs" Line="12" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Chip8" expanded="True">
-            <Node name="instructions" expanded="True" />
+            <Node name="instructions" expanded="True">
+              <Node name="SuperInstruction_FX75_LdRVx.cs" selected="True" />
+            </Node>
           </Node>
           <Node name="Vita8" expanded="True">
-            <Node name="roms" expanded="True">
-              <Node name="testquirks.xml" selected="True" />
-            </Node>
+            <Node name="emulator" expanded="True" />
+            <Node name="roms" expanded="True" />
           </Node>
         </State>
       </Pad>

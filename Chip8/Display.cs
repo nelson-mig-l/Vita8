@@ -23,7 +23,7 @@ namespace Chip8
 		
 		private DisplayMode mode;
 		
-		private byte[,] gfx;
+		private byte[,] gfx = new byte[1,1];
 		private int width;
 		private int height;
 		private bool modified = false;
@@ -40,13 +40,15 @@ namespace Chip8
 		
 		public DisplayMode Mode {
 			set {
-				this.mode = value;
-				//
-				Tuple<int, int> resolution = supportedModes[this.mode];
-				this.width = resolution.Item1;
-				this.height = resolution.Item2;
-				this.gfx = new byte[this.width, this.height];
-				this.changed = true;
+				lock (this.gfx) {
+					this.mode = value;
+					//
+					Tuple<int, int> resolution = supportedModes[this.mode];
+					this.width = resolution.Item1;
+					this.height = resolution.Item2;
+					this.gfx = new byte[this.width, this.height];
+					this.changed = true;
+				}
 			}
 			get {
 				return this.mode;	
@@ -90,8 +92,10 @@ namespace Chip8
 		
 		public byte[,] GetAll()
 		{
-			modified = false;
-			return this.gfx;
+			lock(this.gfx) {
+				modified = false;
+				return this.gfx;
+			}
 		}
 		
 		public int Width 

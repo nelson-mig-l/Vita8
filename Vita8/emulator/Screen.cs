@@ -115,6 +115,13 @@ namespace Vita8
 			
 			byte[,] gfx = display.GetAll();
 			
+			Chip8.DisplayMode mode;
+			if (gfx.Length > 2048) {
+			mode = Chip8.DisplayMode.HIGHRES;
+			} else {
+			mode = Chip8.DisplayMode.LOWRES;
+			}
+			
 			int index = 0;
 			for (int row = 0; row < height; row++)
 			{
@@ -122,7 +129,7 @@ namespace Vita8
 				{
 					if (gfx[col, row] == 0)
 					{
-						if (display.Mode.Equals(Chip8.DisplayMode.LOWRES))
+						if (mode.Equals(Chip8.DisplayMode.LOWRES))
 						{
 							texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 						} 
@@ -133,7 +140,7 @@ namespace Vita8
 					}
 					else
 					{
-						if (display.Mode.Equals(Chip8.DisplayMode.LOWRES))
+						if (mode.Equals(Chip8.DisplayMode.LOWRES))
 						{
 							texture.SetPixels(0, ponlo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 						}
