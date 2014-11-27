@@ -26,6 +26,7 @@ namespace Chip8
 					this.width = resolution.Width;
 					this.height = resolution.Height;
 					this.gfx = new byte[this.width, this.height];
+					Clear();
 				}
 			}
 			get {
@@ -35,8 +36,6 @@ namespace Chip8
 		
 		public void Clear()
 		{
-			this.Mode = DisplayMode.LOWRES;
-			
 			for (int y = 0; y < height; y++)
 			{
 				for (int x = 0; x < width; x++)
@@ -44,12 +43,13 @@ namespace Chip8
 					this.gfx[x, y] = 0;
 				}
 			}
+			
 			modified = true;
 		}
 		
 		public void Reset()
 		{
-			Clear();
+			this.Mode = DisplayMode.LOWRES;
 		}
 		
 		internal void Set(int index, byte v)

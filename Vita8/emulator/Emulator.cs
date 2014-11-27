@@ -63,9 +63,11 @@ namespace Vita8
 			}
 		}
 		
-		public bool Render(Texture2D texture) {
+		public bool Render(Texture2D texture) 
+		{
 			bool modified = chip8.Display.Modified;
-			if (modified) {
+			if (modified) 
+			{
 				screen.Render(chip8.Display, texture);
 			}
 			return modified;

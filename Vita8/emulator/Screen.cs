@@ -110,7 +110,6 @@ namespace Vita8
 		
 		public void Reset(Texture2D texture)
 		{
-			// clear screen according to new color, all pixels off
 			for (int row = 0; row < height; row++)
 			{
 				for (int col = 0; col < width; col++)
@@ -118,10 +117,12 @@ namespace Vita8
 					texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 				}
 			}
-			Console.WriteLine("RESET screen, all pixels off");
+			this.prevgfx = new byte[1,1];
+			this.lenght = this.prevgfx.Length;
 		}
 		
-		private void Draw(byte[,] gfx, Texture2D texture) {
+		private void Draw(byte[,] gfx, Texture2D texture) 
+		{
 			this.lenght = gfx.Length;
 			
 			Console.WriteLine("RESOLUTION CHANGED");
@@ -188,10 +189,12 @@ namespace Vita8
 			if 	(gfx.Length != this.lenght) 
 			{
 				Draw(gfx, texture);
+				Console.WriteLine("Draw");
 			} 
 			else
 			{
 				Redraw(gfx, texture);
+				Console.WriteLine("Redraw");
 			}
 
 		} 

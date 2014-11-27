@@ -124,6 +124,11 @@ namespace Chip8
 			keypad.Reset();
 			
 			this.stack = new Stack<ushort>(16);
+			
+			for (int i = 0; i < 16; i++)
+			{
+				this.v[i] = 0;
+			}
 
 			for (int i = 0; i < 4096; i++)
 			{
@@ -137,6 +142,8 @@ namespace Chip8
 			
 			this.delayTimer = 0;
 			this.soundTimer = 0;
+			
+			Console.WriteLine("CHIP-8 is reseted");
 			
 		}
 		
