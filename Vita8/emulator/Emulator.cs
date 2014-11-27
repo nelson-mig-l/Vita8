@@ -97,9 +97,9 @@ namespace Vita8
 			Console.WriteLine("Update Thread Stoped");
 		}
 		
-		public void Reset()
+		public void Reset(Texture2D texture)
 		{
-			chip8.Reset();
+			screen.Reset(texture);
 		}
 		
 		public void Dispose() 

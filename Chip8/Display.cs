@@ -15,7 +15,6 @@ namespace Chip8
 		
 		public Display()
 		{
-			this.Mode = DisplayMode.LOWRES;
 			this.Reset();
 		}
 		
@@ -36,6 +35,8 @@ namespace Chip8
 		
 		public void Clear()
 		{
+			this.Mode = DisplayMode.LOWRES;
+			
 			for (int y = 0; y < height; y++)
 			{
 				for (int x = 0; x < width; x++)

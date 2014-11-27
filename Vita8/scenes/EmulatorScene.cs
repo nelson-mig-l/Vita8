@@ -75,6 +75,12 @@ namespace Vita8
 			}
 		}
 		
+		public override void OnEnter()
+		{
+			Console.WriteLine("Entering emulator scene");
+			AppMain.emulator.Reset(texture);
+		}
+		
 		public override void OnExit()
 		{
 			AppMain.emulator.Stop();

@@ -24,7 +24,7 @@
 		</Keys>
 	</Keyboard>	
 	<Screen>
-		<on>4278190080</on>
-		<off>4288459429</off><!-- FF9C B2A5 -->
+		<On>4278190080</On>
+		<Off>4288459429</Off><!-- FF9C B2A5 -->
 	</Screen>
 </Configuration>	

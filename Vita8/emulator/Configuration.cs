@@ -17,9 +17,15 @@ namespace Vita8
 			public string Description;
 		}
 
-		public struct ScreenConfiguration {
-			public uint off;
-			public uint on;
+		public class ScreenConfiguration {
+			public uint Off;
+			public uint On;
+			public ScreenConfiguration()
+			{
+				// fill default values
+				Off = 0xFF660000;
+				On = 0xFFFF6600;	
+			}
 		}
 		
 		public struct KeyboardConfiguration
@@ -38,9 +44,7 @@ namespace Vita8
 		
 		public Configuration()
 		{
-			// fill default values
-			Screen.off = 0xFF660000;
-			Screen.on = 0xFFFF6600;
+			Screen = new ScreenConfiguration();
 			
 			// not all roms need to define keyboard. eg test roms
 			// so default is empty
@@ -66,8 +70,8 @@ namespace Vita8
 			Keyboard.Keys.Add(key2);
 			
 			Screen = new ScreenConfiguration();
-			Screen.on = 0xFF00FFFF;
-			Screen.off = 0xFF0000FF;			
+			Screen.On = 0xFF00FFFF;
+			Screen.Off = 0xFF0000FF;			
 		}
 				
 		public static void SaveToXml(Configuration configuration, string filename) {

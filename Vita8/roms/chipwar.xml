@@ -33,7 +33,7 @@
 		</Keys>
 	</Keyboard>	
 	<Screen>
-		<on>4294967295</on>
-		<off>4278190080</off>
+		<On>4294967295</On>
+		<Off>4278190080</Off>
 	</Screen>
 </Configuration>

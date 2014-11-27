@@ -1,24 +1,20 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Chip8\instructions\SuperInstruction_FX75_LdRVx.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Vita8\emulator\Emulator.cs">
     <Files>
-      <File FileName="Chip8\SuperInstructionSet.cs" Line="23" Column="4" />
-      <File FileName="Chip8\instructions\SuperInstruction_FX30_LdHfVx.cs" Line="1" Column="1" />
-      <File FileName="Chip8\instructions\SuperInstruction_FX75_LdRVx.cs" Line="22" Column="1" />
-      <File FileName="Chip8\instructions\SuperInstruction_FX85_LdVxR.cs" Line="22" Column="1" />
-      <File FileName="Chip8\instructions\SuperInstruction_00FD_Exit.cs" Line="12" Column="4" />
+      <File FileName="Vita8\emulator\Screen.cs" Line="173" Column="39" />
+      <File FileName="Vita8\emulator\Keyboard.cs" Line="1" Column="1" />
+      <File FileName="Chip8\Display.cs" Line="35" Column="3" />
+      <File FileName="Vita8\emulator\Emulator.cs" Line="96" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Chip8" expanded="True">
-            <Node name="instructions" expanded="True">
-              <Node name="SuperInstruction_FX75_LdRVx.cs" selected="True" />
-            </Node>
-          </Node>
+          <Node name="Chip8" expanded="True" />
           <Node name="Vita8" expanded="True">
-            <Node name="emulator" expanded="True" />
-            <Node name="roms" expanded="True" />
+            <Node name="emulator" expanded="True">
+              <Node name="Emulator.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>

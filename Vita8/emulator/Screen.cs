@@ -63,8 +63,8 @@ namespace Vita8
 		
 		public void Configure(Configuration configuration) 
 		{
-			COLOR_ON = configuration.Screen.on;
-			COLOR_OFF = configuration.Screen.off;
+			COLOR_ON = configuration.Screen.On;
+			COLOR_OFF = configuration.Screen.Off;
 			
 			for(int index = 0; index < 10*10; index++)
 			{
@@ -107,12 +107,24 @@ namespace Vita8
 			}
 		}
 		
-		public void Render(Chip8.Display display, Texture2D texture) 
+		public void Reset(Texture2D texture)
 		{
-			byte[,] gfx = display.GetAll();
-			
-			if 	(gfx.Length != this.lenght) {
+			// clear screen according to new color, all pixels off
+			for (int row = 0; row < height; row++)
+			{
+				for (int col = 0; col < width; col++)
+				{
+					texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
+				}
+			}
+			Console.WriteLine("RESET screen, all pixels off");
+		}
+		
+		private void Draw(byte[,] gfx, Texture2D texture) {
 				this.lenght = gfx.Length;
+				
+				
+				Console.WriteLine("RESOLUTION CHANGED");
 				
 				Chip8.DisplayMode mode;
 				if (gfx.Length > 2048) {
@@ -120,44 +132,84 @@ namespace Vita8
 					Chip8.DisplayResolution.Resolution resolution = Chip8.DisplayResolution.SUPPORTED_RESOLUTIONS[mode];
 					width = resolution.Width;
 					height = resolution.Height;
+					pixelSize = 5;
 				} else {
 					mode = Chip8.DisplayMode.LOWRES;
 					Chip8.DisplayResolution.Resolution resolution = Chip8.DisplayResolution.SUPPORTED_RESOLUTIONS[mode];
 					width = resolution.Width;
 					height = resolution.Height;
+					pixelSize = 10;
 				}
-			}
-
-			int index = 0;
+				
+				for (int row = 0; row < height; row++)
+				{
+					for (int col = 0; col < width; col++)
+					{
+						if (gfx[col, row] == 0)
+						{
+							texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
+						}
+						else
+						{
+							texture.SetPixels(0, ponlo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
+						}
+					}
+				}
+				prevgfx = new byte[this.width, this.height];
+				Array.Copy(gfx, prevgfx, gfx.Length);
+				// were done
+				return;
+		}
+		
+		private void Redraw(byte[,] gfx, Texture2D texture) 
+		{
 			for (int row = 0; row < height; row++)
 			{
 				for (int col = 0; col < width; col++)
 				{
-					if (gfx[col, row] == 0)
-					{
-						if (gfx.Length <= 2048)
+					if (prevgfx[col, row] != gfx[col, row]) {
+						if (gfx[col, row] == 0)
 						{
-							texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
-						} 
-						else
-						{
-							texture.SetPixels(0, pofhi, col*pixelSize/2, row*pixelSize/2, pixelSize/2, pixelSize/2);
-						}
-					}
-					else
-					{
-						if (gfx.Length <= 2048)
-						{
-							texture.SetPixels(0, ponlo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
+							//if (gfx.Length <= 2048)
+								texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
+							//} 
+							//else
+							//{
+							//	texture.SetPixels(0, pofhi, col*pixelSize/2, row*pixelSize/2, pixelSize/2, pixelSize/2);
+							//}
 						}
 						else
 						{
-							texture.SetPixels(0, ponhi, col*pixelSize/2, row*pixelSize/2, pixelSize/2, pixelSize/2);
+							//if (gfx.Length <= 2048)
+							//{
+								texture.SetPixels(0, ponlo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
+							//}
+							//else
+							//{
+							//	texture.SetPixels(0, ponhi, col*pixelSize/2, row*pixelSize/2, pixelSize/2, pixelSize/2);
+							//}
 						}
 					}
-					index++;
 				}
-			}			
+			}
+			
+			Array.Copy(gfx, prevgfx, gfx.Length);			
+		}
+		
+		private byte[,] prevgfx;
+		public void Render(Chip8.Display display, Texture2D texture) 
+		{
+			byte[,] gfx = display.GetAll();
+			
+			if 	(gfx.Length != this.lenght) 
+			{
+				Draw(gfx, texture);
+			} 
+			else
+			{
+				Redraw(gfx, texture);
+			}
+
 		} 
 
 	}
