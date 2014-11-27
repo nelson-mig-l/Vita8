@@ -15,7 +15,8 @@ namespace Vita8
 		
 		private int pixelSize;
 		
-		private int lenght;
+		private byte[,] prevgfx; // previous buffer, to redraw only needed pixels
+		private int lenght; // lenght of buffer
 		private int width;
 		private int height;
 		
@@ -121,44 +122,41 @@ namespace Vita8
 		}
 		
 		private void Draw(byte[,] gfx, Texture2D texture) {
-				this.lenght = gfx.Length;
-				
-				
-				Console.WriteLine("RESOLUTION CHANGED");
-				
-				Chip8.DisplayMode mode;
-				if (gfx.Length > 2048) {
-					mode = Chip8.DisplayMode.HIGHRES;
-					Chip8.DisplayResolution.Resolution resolution = Chip8.DisplayResolution.SUPPORTED_RESOLUTIONS[mode];
-					width = resolution.Width;
-					height = resolution.Height;
-					pixelSize = 5;
-				} else {
-					mode = Chip8.DisplayMode.LOWRES;
-					Chip8.DisplayResolution.Resolution resolution = Chip8.DisplayResolution.SUPPORTED_RESOLUTIONS[mode];
-					width = resolution.Width;
-					height = resolution.Height;
-					pixelSize = 10;
-				}
-				
-				for (int row = 0; row < height; row++)
+			this.lenght = gfx.Length;
+			
+			Console.WriteLine("RESOLUTION CHANGED");
+			
+			Chip8.DisplayMode mode = Chip8.DisplayResolution.GetDisplayMode(this.lenght);
+			Chip8.DisplayResolution.Resolution resolution = Chip8.DisplayResolution.SUPPORTED_RESOLUTIONS[mode];
+			width = resolution.Width;
+			height = resolution.Height;
+		
+			switch(mode)
+			{
+			case Chip8.DisplayMode.HIGHRES:
+				pixelSize = 5;
+				break;
+			default:
+				pixelSize = 10;
+				break;
+			}
+	
+			for (int row = 0; row < height; row++)
+			{
+				for (int col = 0; col < width; col++)
 				{
-					for (int col = 0; col < width; col++)
+					if (gfx[col, row] == 0)
 					{
-						if (gfx[col, row] == 0)
-						{
-							texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
-						}
-						else
-						{
-							texture.SetPixels(0, ponlo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
-						}
+						texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
+					}
+					else
+					{
+						texture.SetPixels(0, ponlo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 					}
 				}
-				prevgfx = new byte[this.width, this.height];
-				Array.Copy(gfx, prevgfx, gfx.Length);
-				// were done
-				return;
+			}
+			prevgfx = new byte[this.width, this.height];
+			Array.Copy(gfx, prevgfx, gfx.Length);
 		}
 		
 		private void Redraw(byte[,] gfx, Texture2D texture) 
@@ -170,24 +168,11 @@ namespace Vita8
 					if (prevgfx[col, row] != gfx[col, row]) {
 						if (gfx[col, row] == 0)
 						{
-							//if (gfx.Length <= 2048)
-								texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
-							//} 
-							//else
-							//{
-							//	texture.SetPixels(0, pofhi, col*pixelSize/2, row*pixelSize/2, pixelSize/2, pixelSize/2);
-							//}
+							texture.SetPixels(0, poflo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 						}
 						else
 						{
-							//if (gfx.Length <= 2048)
-							//{
-								texture.SetPixels(0, ponlo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
-							//}
-							//else
-							//{
-							//	texture.SetPixels(0, ponhi, col*pixelSize/2, row*pixelSize/2, pixelSize/2, pixelSize/2);
-							//}
+							texture.SetPixels(0, ponlo, col*pixelSize, row*pixelSize, pixelSize, pixelSize);
 						}
 					}
 				}
@@ -196,7 +181,6 @@ namespace Vita8
 			Array.Copy(gfx, prevgfx, gfx.Length);			
 		}
 		
-		private byte[,] prevgfx;
 		public void Render(Chip8.Display display, Texture2D texture) 
 		{
 			byte[,] gfx = display.GetAll();
